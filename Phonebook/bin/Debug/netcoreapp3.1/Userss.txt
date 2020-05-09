@@ -1,0 +1,2 @@
+admin, adminpass, admin, admin, True, 1
+angel, angel, angel, angel, False, 2

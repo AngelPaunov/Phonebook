@@ -1,0 +1,12 @@
+C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Data\bin\Debug\netcoreapp3.1\Phonebook.Data.deps.json
+C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Data\bin\Debug\netcoreapp3.1\Phonebook.Data.dll
+C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Data\bin\Debug\netcoreapp3.1\Phonebook.Data.pdb
+C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Data\obj\Debug\netcoreapp3.1\Phonebook.Data.csprojAssemblyReference.cache
+C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Data\obj\Debug\netcoreapp3.1\Phonebook.Data.csproj.CoreCompileInputs.cache
+C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Data\obj\Debug\netcoreapp3.1\Phonebook.Data.AssemblyInfoInputs.cache
+C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Data\obj\Debug\netcoreapp3.1\Phonebook.Data.AssemblyInfo.cs
+C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Data\obj\Debug\netcoreapp3.1\Phonebook.Data.csproj.CopyComplete
+C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Data\obj\Debug\netcoreapp3.1\Phonebook.Data.dll
+C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Data\obj\Debug\netcoreapp3.1\Phonebook.Data.pdb
+C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Data\bin\Debug\netcoreapp3.1\Phonebook.Entities.dll
+C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Data\bin\Debug\netcoreapp3.1\Phonebook.Entities.pdb
