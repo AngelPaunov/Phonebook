@@ -3,6 +3,7 @@ using Phonebook.Entities;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -128,7 +129,7 @@ namespace Phonebook
             if (step == ConsoleKey.Escape)
                 return ConsoleKey.Escape;
 
-            Console.Write("Choose command: ");
+            Console.Write("Write the desired command: ");
             string[] commandData = Regex.Split(Console.ReadLine().Trim(), @"\s+");
             string command = commandData[0];
 
@@ -276,6 +277,12 @@ namespace Phonebook
                 } // Display phone numbers in different way than the others - Phonenumber [id]: [phonenumber]
                 if (propertyNameToLower == "creatorid" || (entityTypeToLower == "phone" && (propertyNameToLower == "contactid" || propertyNameToLower == "id"))) // Don't display certain properties
                     continue;
+                if (propertyNameToLower == "createdate" || propertyNameToLower == "updatedate")
+                {
+                    DateTimeOffset utcTime = new DateTimeOffset(DateTime.Parse(property.GetValue(entityToDisplay).ToString()));
+                    Console.WriteLine($"{property.Name.Substring(0,6)} {property.Name.Substring(6)}: {utcTime.LocalDateTime.ToString("G", CultureInfo.CreateSpecificCulture("en-US"))}");
+                    continue;
+                }
 
                 Console.WriteLine($"{property.Name}: {property.GetValue(entityToDisplay, null)}");
             }
@@ -322,7 +329,9 @@ namespace Phonebook
             {
                 string propertyNameToLower = property.Name.ToLower();
 
-                if (propertyNameToLower == "contactid" || (propertyNameToLower == "id" && typeNameToLower != "user"))
+                if (propertyNameToLower == "createdate" || propertyNameToLower == "updatedate")
+                    continue;
+                else if (propertyNameToLower == "contactid" || (propertyNameToLower == "id" && typeNameToLower != "user"))
                 {
                     property.SetValue(entity, ContactId);
                     continue;

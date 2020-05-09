@@ -8,8 +8,8 @@ namespace Phonebook.Data
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity, new()
     {
-        private readonly string filePath = $"{typeof(T).Name}ss.txt";
-        private readonly string temporaryFilePath = $"temp{typeof(T).Name}ss.txt";
+        private readonly string filePath = $"{typeof(T).Name}s.txt";
+        private readonly string temporaryFilePath = $"temp{typeof(T).Name}s.txt";
 
         private readonly string typeNameToLower = typeof(T).Name.ToLower();
 
@@ -30,7 +30,11 @@ namespace Phonebook.Data
         {
             foreach (var property in entityToValidate.GetType().GetProperties())
             {
-                if (string.IsNullOrWhiteSpace(property.GetValue(entityToValidate)?.ToString()))
+                if (property.Name.ToLower() == "createdate" || property.Name.ToLower() == "updatedate")
+                    continue;
+                else if (string.IsNullOrWhiteSpace(property.GetValue(entityToValidate)?.ToString()))
+                    return false;
+                else if (property.Name.ToLower() == "isadmin" && !bool.Parse(property.GetValue(entityToValidate).ToString()))
                     return false;
             }
             return true;
@@ -62,6 +66,8 @@ namespace Phonebook.Data
                             property.SetValue(entity, bool.Parse(userData[index]));
                         else if (index == 5 && typeNameToLower == "user")
                             property.SetValue(entity, int.Parse(userData[index]));
+                        else if (((index == 6 || index == 7) && typeNameToLower == "user") || ((index == 5 || index == 6) && typeNameToLower == "contact") || ((index == 3 || index == 4) && typeNameToLower == "phone"))
+                            property.SetValue(entity, DateTimeOffset.Parse(userData[index]));
                         else if (typeNameToLower == "contact" && (index == 0 || index == 4))
                             property.SetValue(entity, int.Parse(userData[index]));
                         else if (typeNameToLower == "phone" && (index == 0 || index == 2))
@@ -76,12 +82,13 @@ namespace Phonebook.Data
             }
         }
 
-        public bool EditEntity(T entityToSave, int entityId)
+        public bool EditEntity(T entityToSave, int entityId)//TODO:set Update Date
         {
             if (entityId == 0 || !DataValidation(entityToSave))
                 return false;
 
             entityToSave.Id = entityId;
+            entityToSave.CreateDate = GetEntity(entityId).CreateDate;
 
             using (StreamWriter writer = new StreamWriter(temporaryFilePath, true))
             {
@@ -93,6 +100,11 @@ namespace Phonebook.Data
                     {
                         foreach (var property in typeof(T).GetProperties())
                         {
+                            if (property.Name.ToLower() == "updatedate")
+                            {
+                                entityDataRow += $"{DateTimeOffset.UtcNow}, ";
+                                continue;
+                            }
                             entityDataRow += $"{property.GetValue(entityToSave)}, ";
                         }
                     }
@@ -111,7 +123,7 @@ namespace Phonebook.Data
             return true;
         }
 
-        public bool CreateNewEntity(T entityToCreate)
+        public bool CreateNewEntity(T entityToCreate) //set Create Date
         {
             if (!DataValidation(entityToCreate))
                 return false;
@@ -124,6 +136,11 @@ namespace Phonebook.Data
                 string entityDataRow = null;
                 foreach (var property in typeof(T).GetProperties())
                 {
+                    if (property.Name.ToLower() == "createdate" || property.Name.ToLower() == "updatedate")
+                    {
+                        entityDataRow += $"{DateTimeOffset.UtcNow}, ";
+                        continue;
+                    }
                     entityDataRow += $"{property.GetValue(entityToCreate)}, ";
                 }
                 writer.WriteLine(entityDataRow.Remove(entityDataRow.Length - 2));

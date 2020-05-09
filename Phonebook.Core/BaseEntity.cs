@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Phonebook.Entities
@@ -9,5 +10,7 @@ namespace Phonebook.Entities
         public BaseEntity()
         { }
         public int Id { get; set; }
+        public DateTimeOffset CreateDate { get; set; }
+        public DateTimeOffset UpdateDate { get; set; }
     }
 }
