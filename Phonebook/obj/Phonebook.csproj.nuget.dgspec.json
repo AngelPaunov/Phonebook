@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.csproj": {}
+    "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook\\Phonebook.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
+    "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj",
         "projectName": "Phonebook.Entities",
-        "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj",
-        "packagesPath": "C:\\Users\\Ангел\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Core\\obj\\",
+        "projectPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj",
+        "packagesPath": "C:\\Users\\danai\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Ангел\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\danai\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,20 +56,17 @@
         }
       }
     },
-    "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj": {
+    "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj",
+        "projectUniqueName": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj",
         "projectName": "Phonebook.Data",
-        "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj",
-        "packagesPath": "C:\\Users\\Ангел\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Data\\obj\\",
+        "projectPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj",
+        "packagesPath": "C:\\Users\\danai\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Data\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Ангел\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\danai\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,8 +79,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
-                "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj"
+              "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
+                "projectPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj"
               }
             }
           }
@@ -118,20 +112,17 @@
         }
       }
     },
-    "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.csproj": {
+    "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook\\Phonebook.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.csproj",
+        "projectUniqueName": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook\\Phonebook.csproj",
         "projectName": "Phonebook",
-        "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.csproj",
-        "packagesPath": "C:\\Users\\Ангел\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\obj\\",
+        "projectPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook\\Phonebook.csproj",
+        "packagesPath": "C:\\Users\\danai\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Ангел\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\danai\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -144,11 +135,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
-                "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj"
+              "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
+                "projectPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj"
               },
-              "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj": {
-                "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj"
+              "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj": {
+                "projectPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj"
               }
             }
           }
