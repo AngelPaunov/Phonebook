@@ -26,15 +26,16 @@ namespace Phonebook.Data
             }
         }
 
-        private bool DataValidation(T entityToValidate)
+        private bool IsDataValid(T entityToValidate)
         {
             foreach (var property in entityToValidate.GetType().GetProperties())
             {
-                if (property.Name.ToLower() == "createdate" || property.Name.ToLower() == "updatedate")
+                string propertyNameLower = property.Name.ToLower();
+                if (propertyNameLower == "createdate" || propertyNameLower == "updatedate")
                     continue;
                 else if (string.IsNullOrWhiteSpace(property.GetValue(entityToValidate)?.ToString()))
                     return false;
-                else if (property.Name.ToLower() == "isadmin" && !bool.Parse(property.GetValue(entityToValidate).ToString()))
+                else if (propertyNameLower == "isadmin" && !bool.Parse(property.GetValue(entityToValidate).ToString()))
                     return false;
             }
             return true;
@@ -45,7 +46,7 @@ namespace Phonebook.Data
             return GetAllEntities().SingleOrDefault(u => u.Id == entityId);
         }
 
-        public User GetEntity(string username)
+        public User GetUser(string username)
         {
             return GetAllEntities().Where(e => e is User).Cast<User>().FirstOrDefault(u => u.Username == username);
         }
@@ -82,9 +83,9 @@ namespace Phonebook.Data
             }
         }
 
-        public bool EditEntity(T entityToSave, int entityId)//TODO:set Update Date
+        public bool EditEntity(T entityToSave, int entityId)
         {
-            if (entityId == 0 || !DataValidation(entityToSave))
+            if (entityId == 0 || !IsDataValid(entityToSave))
                 return false;
 
             entityToSave.Id = entityId;
@@ -123,9 +124,9 @@ namespace Phonebook.Data
             return true;
         }
 
-        public bool CreateNewEntity(T entityToCreate) //set Create Date
+        public bool CreateNewEntity(T entityToCreate)
         {
-            if (!DataValidation(entityToCreate))
+            if (!IsDataValid(entityToCreate))
                 return false;
 
             int index = GetAllEntities().LastOrDefault()?.Id ?? 0;
@@ -178,7 +179,7 @@ namespace Phonebook.Data
 
         public bool UserAuthentication(User userToAuthenticate)
         {
-            return GetEntity(userToAuthenticate.Username) == null ? false : GetEntity(userToAuthenticate.Username).Password == userToAuthenticate.Password;
+            return GetUser(userToAuthenticate.Username) == null ? false : GetUser(userToAuthenticate.Username).Password == userToAuthenticate.Password;
         }
     }
 }

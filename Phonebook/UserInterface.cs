@@ -63,7 +63,7 @@ namespace Phonebook
             bool loggedIn = userRepository.UserAuthentication(new User(username, password));
             if (loggedIn)
             {
-                User loggedInUser = userRepository.GetEntity(username);
+                User loggedInUser = userRepository.GetUser(username);
                 UserId = loggedInUser.Id;
                 return loggedInUser;
             }
@@ -84,11 +84,11 @@ namespace Phonebook
 
                 while (step == ConsoleKey.U && step != ConsoleKey.Escape)
                 {
-                    step = DataProcessing(userRepository);
+                    step = ModifyEntity(userRepository);
                 }
                 while (step == ConsoleKey.C && step != ConsoleKey.Escape)
                 {
-                    step = DataProcessing(contactRepository);
+                    step = ModifyEntity(contactRepository);
                 }
             }
         }
@@ -100,7 +100,7 @@ namespace Phonebook
                 ConsoleKey step;
                 do
                 {
-                    step = DataProcessing(contactRepository);
+                    step = ModifyEntity(contactRepository);
                 }
                 while (step == ConsoleKey.C && step != ConsoleKey.Escape);
 
@@ -109,7 +109,7 @@ namespace Phonebook
             }
         }
 
-        public static ConsoleKey DataProcessing<T>(IBaseRepository<T> entityRepository) where T : BaseEntity, new()
+        public static ConsoleKey ModifyEntity<T>(IBaseRepository<T> entityRepository) where T : BaseEntity, new()
         {
             string typeNameToLower = typeof(T).Name.ToLower();
 
@@ -295,7 +295,7 @@ namespace Phonebook
                 //ConsoleKey step = ConsoleKey.P;
                 if (phoneMenu)//step == ConsoleKey.P &&
                 {
-                    DataProcessing(new BaseRepository<Phone>());
+                    ModifyEntity(new BaseRepository<Phone>());
                 }
             }
         }
