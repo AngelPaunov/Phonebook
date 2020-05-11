@@ -1,9 +1,0 @@
-C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Core\bin\Release\netcoreapp3.1\Phonebook.Entities.deps.json
-C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Core\bin\Release\netcoreapp3.1\Phonebook.Entities.dll
-C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Core\bin\Release\netcoreapp3.1\Phonebook.Entities.pdb
-C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Core\obj\Release\netcoreapp3.1\Phonebook.Entities.csprojAssemblyReference.cache
-C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Core\obj\Release\netcoreapp3.1\Phonebook.Entities.csproj.CoreCompileInputs.cache
-C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Core\obj\Release\netcoreapp3.1\Phonebook.Entities.AssemblyInfoInputs.cache
-C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Core\obj\Release\netcoreapp3.1\Phonebook.Entities.AssemblyInfo.cs
-C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Core\obj\Release\netcoreapp3.1\Phonebook.Entities.dll
-C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook.Core\obj\Release\netcoreapp3.1\Phonebook.Entities.pdb

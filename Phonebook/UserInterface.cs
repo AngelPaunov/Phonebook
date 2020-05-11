@@ -2,7 +2,6 @@
 using Phonebook.Entities;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -17,7 +16,9 @@ namespace Phonebook
         public static ConsoleKey HomeViewModel()
         {
             Console.Clear();
-            Console.WriteLine($"Welcome to our app \n[L]ogin\n[E]xit");
+            Console.WriteLine($"Welcome to our app");
+            Console.WriteLine("[L]ogin");
+            Console.WriteLine("[E]xit");
             return Console.ReadKey(true).Key;
         }
 
@@ -280,7 +281,7 @@ namespace Phonebook
                 if (propertyNameToLower == "createdate" || propertyNameToLower == "updatedate")
                 {
                     DateTimeOffset utcTime = new DateTimeOffset(DateTime.Parse(property.GetValue(entityToDisplay).ToString()));
-                    Console.WriteLine($"{property.Name.Substring(0,6)} {property.Name.Substring(6)}: {utcTime.LocalDateTime.ToString("G", CultureInfo.CreateSpecificCulture("en-US"))}");
+                    Console.WriteLine($"{property.Name.Substring(0, 6)} {property.Name.Substring(6)}: {utcTime.LocalDateTime.ToString("G", CultureInfo.CreateSpecificCulture("en-US"))}");
                     continue;
                 }
 
