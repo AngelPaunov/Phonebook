@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Phonebook.Views.User;
+using System;
 
 namespace Phonebook.Views
 {
@@ -26,12 +27,12 @@ namespace Phonebook.Views
             switch (userChoice)
             {
                 case AdminMenuEnum.Users:
-                    //var userModifyView = new UserModifyView();
-                    //userModifyView.Show();
+                    var userModifyView = new UserModifyView();
+                    userModifyView.Show();
                     return false;
                 case AdminMenuEnum.Contacts:
-                    //var contactModifyView = new ContactModifyView();
-                    //userView.Show();
+                    var contactModifyView = new ContactModifyView();
+                    contactModifyView.Show();
                     return false;
                 case AdminMenuEnum.Exit:
                     return true;

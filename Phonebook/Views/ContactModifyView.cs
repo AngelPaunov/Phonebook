@@ -7,15 +7,18 @@ namespace Phonebook.Views
     {
         public void Show()
         {
-            Console.Clear();
-
-            RenderMenu();
-
-            var userChoice = GetChoice();
-
-            if (HandleChoice(userChoice))
+            while (true)
             {
-                return;
+                Console.Clear();
+
+                RenderMenu();
+
+                var userChoice = GetChoice();
+
+                if (HandleChoice(userChoice))
+                {
+                    return;
+                }
             }
         }
 
