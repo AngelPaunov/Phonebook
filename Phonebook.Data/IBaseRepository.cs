@@ -5,10 +5,10 @@ namespace Phonebook.Data
 {
     public interface IBaseRepository<T> where T : BaseEntity
     {
-        T GetEntity(int entityId);
+        T GetEntity(uint entityId);
         IEnumerable<T> GetAllEntities();
-        bool EditEntity(T entityToSave, int entityId);
+        bool EditEntity(T entityToSave, uint entityId);
         bool CreateNewEntity(T entityToCreate);
-        bool DeleteEntity(int entityId);
+        bool DeleteEntity(uint entityId);
     }
 }

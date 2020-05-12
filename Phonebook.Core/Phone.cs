@@ -10,7 +10,7 @@ namespace Phonebook.Entities
         public Phone()
         {
         }
-        public Phone(int id, int contactId, string _phoneNumber)
+        public Phone(uint id, int contactId, string _phoneNumber)
         {
             base.Id = id;
             this.ContactId = contactId;

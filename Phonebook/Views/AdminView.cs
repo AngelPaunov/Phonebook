@@ -1,4 +1,5 @@
-﻿using Phonebook.Views.User;
+﻿using Phonebook.Views.ContactViews;
+using Phonebook.Views.UserViews;
 using System;
 
 namespace Phonebook.Views

@@ -1,7 +1,8 @@
 ﻿using System;
-namespace Phonebook.Views.User
+
+namespace Phonebook.Views.PhoneViews
 {
-    public class UserModifyView
+    public class PhoneModifyView
     {
         public void Show()
         {
@@ -25,30 +26,22 @@ namespace Phonebook.Views.User
             switch (userChoice)
             {
                 case ModifyMenuEnum.Create:
-                    var createUserView= new CreateUserView();
-                    createUserView.Show();
-                    return false;
-                case ModifyMenuEnum.ReadAll:
-                    var readAllUserView = new ReadAllUsersView();
-                    readAllUserView.Show();
+                    var createPhoneView = new CreatePhoneView();
+                    createPhoneView.Show();
                     return false;
                 case ModifyMenuEnum.ReadSingle:
-                    var readUser = new ReadUserView();
-                    readUser.Show();
+                    return false;
+                case ModifyMenuEnum.ReadAll:
                     return false;
                 case ModifyMenuEnum.Update:
-                    var updateUserView= new UpdateUserView();
-                    updateUserView.Show();
                     return false;
                 case ModifyMenuEnum.Delete:
-                    var deleteUserView= new DeleteUserView();
-                    deleteUserView.Show();
                     return false;
                 case ModifyMenuEnum.Exit:
                     return true;
                 case ModifyMenuEnum.Invalid:
-                    Console.WriteLine("Invalid choice. Please try again.");
-                    Console.ReadKey(true);
+                    Console.WriteLine("Invalid choice. Please try again");
+                    Console.ReadKey();
                     return false;
             }
 
@@ -63,14 +56,12 @@ namespace Phonebook.Views.User
             {
                 case ConsoleKey.C:
                     return ModifyMenuEnum.Create;
-                case ConsoleKey.A:
-                    return ModifyMenuEnum.ReadAll;
                 case ConsoleKey.R:
                     return ModifyMenuEnum.ReadSingle;
+                case ConsoleKey.A:
+                    return ModifyMenuEnum.ReadAll;
                 case ConsoleKey.U:
                     return ModifyMenuEnum.Update;
-                case ConsoleKey.D:
-                    return ModifyMenuEnum.Delete;
                 case ConsoleKey.X:
                     return ModifyMenuEnum.Exit;
                 default:
@@ -80,11 +71,11 @@ namespace Phonebook.Views.User
 
         private void RenderMenu()
         {
-            Console.WriteLine("[C]reate user");
-            Console.WriteLine("Re[a]d all users");
-            Console.WriteLine("[R]ead single user");
-            Console.WriteLine("[U]pdate user");
-            Console.WriteLine("[D]elete user");
+            Console.WriteLine("[C]reate phone");
+            Console.WriteLine("[R]ead phone");
+            Console.WriteLine("Re[a]d all phones");
+            Console.WriteLine("[U]pdate phone");
+            Console.WriteLine("[D]elete phone");
             Console.WriteLine("E[x]it");
         }
     }

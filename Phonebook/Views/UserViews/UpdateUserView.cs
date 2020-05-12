@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Phonebook.Entities;
+using Phonebook.Repositories;
+using System;
 
-namespace Phonebook.Views.User
+namespace Phonebook.Views.UserViews
 {
     public class UpdateUserView
     {
@@ -8,7 +10,7 @@ namespace Phonebook.Views.User
         {
             Console.Clear();
             Console.Write("Input user's id to update:");
-            bool isUserIdNumber = uint.TryParse(Console.ReadLine(), out uint userId);
+            bool isUserIdNumber = uint.TryParse(Console.ReadLine(), out uint userInputId);
 
             if (!isUserIdNumber)
             {
@@ -19,10 +21,17 @@ namespace Phonebook.Views.User
 
             //TODO: get user from db 
             // if user is null
-            Console.WriteLine("Invalid user id. User not found.");
-            Console.ReadKey(true);
+            var userFromInput = new User(userInputId);
 
-            //if not null
+            UserRepository userRepository = new UserRepository();
+            var userFromRepository = userRepository.ReadUser(userFromInput);
+
+            if (userFromRepository == null) {
+                Console.WriteLine("Invalid user id. User not found.");
+                Console.ReadKey(true);
+                return;
+            }
+
             Console.Write("Username: ");
             string username = Console.ReadLine();
 
@@ -67,7 +76,10 @@ namespace Phonebook.Views.User
                 Console.WriteLine("Invalid admin value.");
                 return;
             }
+
             //update the user in db
+            userFromInput = new User(userInputId, username, password, firstName, lastName, isAdmin);
+            userRepository.UpdateUser(userFromInput);
         }
     }
 }

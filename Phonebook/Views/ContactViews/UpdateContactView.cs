@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Phonebook.Views.Contact
+namespace Phonebook.Views.ContactViews
 {
     public class UpdateContactView
     {

@@ -1,9 +1,8 @@
-﻿using Phonebook.Views.Contact;
-using System;
+﻿using System;
 
-namespace Phonebook.Views
+namespace Phonebook.Views.UserViews
 {
-    public class ContactModifyView
+    public class UserModifyView
     {
         public void Show()
         {
@@ -27,30 +26,30 @@ namespace Phonebook.Views
             switch (userChoice)
             {
                 case ModifyMenuEnum.Create:
-                    var createContactView = new CreateContactView();
-                    createContactView.Show();
-                    return false;
-                case ModifyMenuEnum.ReadSingle:
-                    var readContactView = new ReadContactView();
-                    readContactView.Show();
+                    var createUserView= new CreateUserView();
+                    createUserView.Show();
                     return false;
                 case ModifyMenuEnum.ReadAll:
-                    var readAllContactsView = new ReadAllContactsView();
-                    readAllContactsView.Show();
+                    var readAllUserView = new ReadAllUsersView();
+                    readAllUserView.Show();
+                    return false;
+                case ModifyMenuEnum.ReadSingle:
+                    var readUser = new ReadUserView();
+                    readUser.Show();
                     return false;
                 case ModifyMenuEnum.Update:
-                    var updateContactView = new UpdateContactView();
-                    updateContactView.Show();
+                    var updateUserView= new UpdateUserView();
+                    updateUserView.Show();
                     return false;
                 case ModifyMenuEnum.Delete:
-                    var deleteContactView = new DeleteContactView();
-                    deleteContactView.Show();
+                    var deleteUserView= new DeleteUserView();
+                    deleteUserView.Show();
                     return false;
                 case ModifyMenuEnum.Exit:
                     return true;
                 case ModifyMenuEnum.Invalid:
-                    Console.WriteLine("Invalid choice. Please try again");
-                    Console.ReadKey();
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    Console.ReadKey(true);
                     return false;
             }
 
@@ -65,10 +64,10 @@ namespace Phonebook.Views
             {
                 case ConsoleKey.C:
                     return ModifyMenuEnum.Create;
-                case ConsoleKey.R:
-                    return ModifyMenuEnum.ReadSingle;
                 case ConsoleKey.A:
                     return ModifyMenuEnum.ReadAll;
+                case ConsoleKey.R:
+                    return ModifyMenuEnum.ReadSingle;
                 case ConsoleKey.U:
                     return ModifyMenuEnum.Update;
                 case ConsoleKey.D:
@@ -82,11 +81,11 @@ namespace Phonebook.Views
 
         private void RenderMenu()
         {
-            Console.WriteLine("[C]reate contact");
-            Console.WriteLine("[R]ead contact");
-            Console.WriteLine("Re[a]d all contact");
-            Console.WriteLine("[U]pdate contact");
-            Console.WriteLine("[D]elete contact");
+            Console.WriteLine("[C]reate user");
+            Console.WriteLine("Re[a]d all users");
+            Console.WriteLine("[R]ead single user");
+            Console.WriteLine("[U]pdate user");
+            Console.WriteLine("[D]elete user");
             Console.WriteLine("E[x]it");
         }
     }

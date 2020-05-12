@@ -10,8 +10,8 @@ namespace Phonebook
 {
     public static class UserInterface
     {
-        private static int UserId { get; set; }
-        private static int ContactId { get; set; }
+        private static uint UserId { get; set; }
+        private static uint ContactId { get; set; }
 
         public static ConsoleKey HomeViewModel()
         {
@@ -135,8 +135,8 @@ namespace Phonebook
             string command = commandData[0];
 
             string message = null;
-            int entityId = 0;
-            int databaseEntityIndex = 0;
+            uint entityId = 0;
+            uint databaseEntityIndex = 0;
 
             GetSecondPartOfCommand(entityRepository, typeNameToLower, commandData, ref command, ref entityId, ref databaseEntityIndex);
 
@@ -160,7 +160,7 @@ namespace Phonebook
             else return ConsoleKey.P;
         }
 
-        private static string ExecuteCommand<T>(IBaseRepository<T> entityRepository, string typeNameToLower, string command, string message, int entityId, int databaseEntityIndex) where T : BaseEntity, new()
+        private static string ExecuteCommand<T>(IBaseRepository<T> entityRepository, string typeNameToLower, string command, string message, uint entityId, uint databaseEntityIndex) where T : BaseEntity, new()
         {
             switch (command.ToLower())
             {
@@ -191,23 +191,23 @@ namespace Phonebook
             return message;
         }
 
-        private static void GetSecondPartOfCommand<T>(IBaseRepository<T> entityRepository, string typeNameToLower, string[] commandData, ref string command, ref int entityId, ref int databaseEntityIndex) where T : BaseEntity, new()
+        private static void GetSecondPartOfCommand<T>(IBaseRepository<T> entityRepository, string typeNameToLower, string[] commandData, ref string command, ref uint entityId, ref uint databaseEntityIndex) where T : BaseEntity, new()
         {
             if (commandData.Length >= 2)
             {
-                entityId = int.TryParse(commandData[1], out int id) ? id : -1;
+                entityId = uint.TryParse(commandData[1], out uint id) ? id : 0;
 
-                if (entityId == -1)
+                if (entityId == 0)
                     command += commandData[1];
                 else
                 {
                     try
                     {
-                        int entityIdd = entityId;
+                        uint entityIdd = entityId;
                         if (typeNameToLower == "contact")
-                            databaseEntityIndex = entityRepository.GetAllEntities().Where(c => (c as Contact).CreatorId == UserId).OrderBy(c => c.Id).ElementAt(entityId - 1).Id;
+                            databaseEntityIndex = entityRepository.GetAllEntities().Where(c => (c as Contact).CreatorId == UserId).OrderBy(c => c.Id).ElementAt((int)entityId - 1).Id;
                         else if (typeNameToLower == "phone")
-                            databaseEntityIndex = entityRepository.GetAllEntities().Where(c => (c as Phone).ContactId == ContactId).OrderBy(c => c.Id).ElementAt(entityId - 1).Id;
+                            databaseEntityIndex = entityRepository.GetAllEntities().Where(c => (c as Phone).ContactId == ContactId).OrderBy(c => c.Id).ElementAt((int)entityId - 1).Id;
                         else
                             databaseEntityIndex = entityRepository.GetAllEntities().First(c => c.Id == entityIdd).Id;
                     }
@@ -219,7 +219,7 @@ namespace Phonebook
             }
         }
 
-        private static void DeleteHierarchy(string typeNameToLower, int entityId, int databaseEntityIndex, bool deleteEntity)
+        private static void DeleteHierarchy(string typeNameToLower, uint entityId, uint databaseEntityIndex, bool deleteEntity)
         {
             var phoneRepository = new BaseRepository<Phone>();
 
@@ -239,7 +239,7 @@ namespace Phonebook
                 DeletePhonesByContactId(phoneRepository, databaseEntityIndex);
         }
 
-        private static void DeletePhonesByContactId(BaseRepository<Phone> phoneRepository, int contactId)
+        private static void DeletePhonesByContactId(BaseRepository<Phone> phoneRepository, uint contactId)
         {
             Phone[] phones = phoneRepository.GetAllEntities().Where(c => c.ContactId == contactId).ToArray();
             for (int i = 0; i < phones.Count(); i++)
@@ -248,7 +248,7 @@ namespace Phonebook
             }
         }
 
-        private static void DisplayEntity(BaseEntity entityToDisplay, int displayId, bool phoneMenu)
+        private static void DisplayEntity(BaseEntity entityToDisplay, uint displayId, bool phoneMenu)
         {
             string entityTypeToLower = entityToDisplay?.GetType().Name.ToLower();
 
@@ -267,7 +267,7 @@ namespace Phonebook
 
                 if (entityTypeToLower == "contact" && propertyNameToLower == "id")
                 {
-                    ContactId = (int)property.GetValue(entityToDisplay);
+                    ContactId = (uint)property.GetValue(entityToDisplay);
                     Console.WriteLine($"{property.Name}: {displayId}");
                     continue;
                 } //Set the contact id and display it
@@ -303,7 +303,7 @@ namespace Phonebook
 
         private static void DisplayEntities(IEnumerable entitiesToDisplay)
         {
-            int index = 1;
+            uint index = 1;
             foreach (BaseEntity entity in entitiesToDisplay)
             {
                 string entityTypeToLower = entity.GetType().Name.ToLower();

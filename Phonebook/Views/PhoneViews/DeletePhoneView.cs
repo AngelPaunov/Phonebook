@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Phonebook.Views.Phone
+namespace Phonebook.Views.PhoneViews
 {
     public class DeletePhoneView
     {

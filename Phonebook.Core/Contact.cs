@@ -5,7 +5,7 @@
         public Contact()
         {
         }
-        public Contact(int creatorId, int contactId, string firstName, string lastName, string email)
+        public Contact(uint creatorId, uint contactId, string firstName, string lastName, string email)
         {
             CreatorId = creatorId;
             Id = contactId;
@@ -16,7 +16,7 @@
         public Contact(Contact contact) : this(contact.CreatorId, contact.Id, contact.FirstName, contact.LastName, contact.Email)
         {
         }
-        public int CreatorId { get; set; }
+        public uint CreatorId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

@@ -41,7 +41,7 @@ namespace Phonebook.Data
             return true;
         }
 
-        public T GetEntity(int entityId)
+        public T GetEntity(uint entityId)
         {
             return GetAllEntities().SingleOrDefault(u => u.Id == entityId);
         }
@@ -83,7 +83,7 @@ namespace Phonebook.Data
             }
         }
 
-        public bool EditEntity(T entityToSave, int entityId)
+        public bool EditEntity(T entityToSave, uint entityId)
         {
             if (entityId == 0 || !IsDataValid(entityToSave))
                 return false;
@@ -129,7 +129,7 @@ namespace Phonebook.Data
             if (!IsDataValid(entityToCreate))
                 return false;
 
-            int index = GetAllEntities().LastOrDefault()?.Id ?? 0;
+            uint index = GetAllEntities().LastOrDefault()?.Id ?? 0;
             entityToCreate.Id = index + 1;
 
             using (StreamWriter writer = new StreamWriter(filePath, true))
@@ -150,7 +150,7 @@ namespace Phonebook.Data
             return true;
         }
 
-        public bool DeleteEntity(int entityId)
+        public bool DeleteEntity(uint entityId)
         {
             if (entityId == 0)
                 return false;

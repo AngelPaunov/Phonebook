@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Phonebook.Views.Phone
+namespace Phonebook.Views.ContactViews
 {
-    public class PhoneModifyView
+    public class ContactModifyView
     {
         public void Show()
         {
@@ -26,16 +26,24 @@ namespace Phonebook.Views.Phone
             switch (userChoice)
             {
                 case ModifyMenuEnum.Create:
-                    var createPhoneView = new CreatePhoneView();
-                    createPhoneView.Show();
+                    var createContactView = new CreateContactView();
+                    createContactView.Show();
                     return false;
                 case ModifyMenuEnum.ReadSingle:
+                    var readContactView = new ReadContactView();
+                    readContactView.Show();
                     return false;
                 case ModifyMenuEnum.ReadAll:
+                    var readAllContactsView = new ReadAllContactsView();
+                    readAllContactsView.Show();
                     return false;
                 case ModifyMenuEnum.Update:
+                    var updateContactView = new UpdateContactView();
+                    updateContactView.Show();
                     return false;
                 case ModifyMenuEnum.Delete:
+                    var deleteContactView = new DeleteContactView();
+                    deleteContactView.Show();
                     return false;
                 case ModifyMenuEnum.Exit:
                     return true;
@@ -62,6 +70,8 @@ namespace Phonebook.Views.Phone
                     return ModifyMenuEnum.ReadAll;
                 case ConsoleKey.U:
                     return ModifyMenuEnum.Update;
+                case ConsoleKey.D:
+                    return ModifyMenuEnum.Delete;
                 case ConsoleKey.X:
                     return ModifyMenuEnum.Exit;
                 default:
@@ -71,11 +81,11 @@ namespace Phonebook.Views.Phone
 
         private void RenderMenu()
         {
-            Console.WriteLine("[C]reate phone");
-            Console.WriteLine("[R]ead phone");
-            Console.WriteLine("Re[a]d all phones");
-            Console.WriteLine("[U]pdate phone");
-            Console.WriteLine("[D]elete phone");
+            Console.WriteLine("[C]reate contact");
+            Console.WriteLine("[R]ead contact");
+            Console.WriteLine("Re[a]d all contact");
+            Console.WriteLine("[U]pdate contact");
+            Console.WriteLine("[D]elete contact");
             Console.WriteLine("E[x]it");
         }
     }

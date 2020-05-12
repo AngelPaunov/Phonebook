@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Phonebook.Entities;
+using Phonebook.Repositories;
+using System;
 
-namespace Phonebook.Views.User
+namespace Phonebook.Views.UserViews
 {
     public class CreateUserView
     {
@@ -53,6 +55,8 @@ namespace Phonebook.Views.User
             }
 
             //TODO: save the new user in db
+            UserRepository userRepository = new UserRepository();
+            userRepository.CreateUser(new User(username,password,firstName,lastName,isAdmin));
         }
     }
 }
