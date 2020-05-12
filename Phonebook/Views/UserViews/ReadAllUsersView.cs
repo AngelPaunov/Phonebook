@@ -11,8 +11,6 @@ namespace Phonebook.Views.UserViews
 
             var userRepository = new UserRepository();
 
-            //TODO: get all users from db
-
             foreach (var user in userRepository.ReadAllUsers())
             {
                 Console.WriteLine($"ID: {user.Id}");

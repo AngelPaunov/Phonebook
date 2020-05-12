@@ -13,6 +13,8 @@ namespace Phonebook.Views.UserViews
             Console.Write("Input user's id to update:");
             bool isUserIdNumber = uint.TryParse(Console.ReadLine(), out uint userInputId);
 
+            Console.WriteLine();
+
             if (!isUserIdNumber)
             {
                 Console.WriteLine("Please input positive number.");
@@ -20,7 +22,6 @@ namespace Phonebook.Views.UserViews
                 return;
             }
 
-            //TODO: get user from db
             var userFromInput = new User(userInputId);
 
             UserRepository userRepository = new UserRepository();

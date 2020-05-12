@@ -12,6 +12,8 @@ namespace Phonebook.Views.UserViews
             Console.Write("Input user's id to delete: ");
             bool isUserIdNumber = uint.TryParse(Console.ReadLine(), out uint userInputId);
 
+            Console.WriteLine();
+
             if (!isUserIdNumber)
             {
                 Console.WriteLine("Please input positive number.");
@@ -32,11 +34,8 @@ namespace Phonebook.Views.UserViews
             }
 
             userRepository.DeleteUser(userFromRepository);
-            //TODO: get user from db 
-            // if user is null
-
-            //if not null
-            //delete the user in db
+            Console.WriteLine("User has been deleted.");
+            Console.ReadKey(true);
         }
     }
 }

@@ -82,6 +82,7 @@ namespace Phonebook.Repositories
                         if (user.Id == userToUpdate.Id)
                         {
                             writer.WriteLine($"{userToUpdate.Id},{userToUpdate.Username},{userToUpdate.Password},{userToUpdate.FirstName},{userToUpdate.LastName},{userToUpdate.IsAdmin}");
+                            continue;
                         }
 
                         writer.WriteLine($"{user.Id},{user.Username},{user.Password},{user.FirstName},{user.LastName},{user.IsAdmin}");

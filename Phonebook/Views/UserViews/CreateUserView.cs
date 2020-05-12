@@ -12,36 +12,40 @@ namespace Phonebook.Views.UserViews
             Console.Write("Username: ");
             string username = Console.ReadLine();
 
-            if(string.IsNullOrEmpty(username))
+            if(string.IsNullOrWhiteSpace(username))
             {
                 Console.WriteLine("Invalid username.");
+                Console.ReadKey(true);
                 return;
             }
 
             Console.Write("Password: ");
             string password = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(password))
+            if (string.IsNullOrWhiteSpace(password))
             {
                 Console.Write("Invalid password.");
+                Console.ReadKey(true);
                 return;
             }
 
             Console.Write("First Name: ");
             string firstName = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(firstName))
+            if (string.IsNullOrWhiteSpace(firstName))
             {
                 Console.WriteLine("Invalid first name.");
+                Console.ReadKey(true);
                 return;
             }
 
             Console.Write("Last Name: ");
             string lastName= Console.ReadLine();
 
-            if (string.IsNullOrEmpty(lastName))
+            if (string.IsNullOrWhiteSpace(lastName))
             {
                 Console.WriteLine("Invalid last name.");
+                Console.ReadKey(true);
                 return;
             }
 
@@ -51,10 +55,10 @@ namespace Phonebook.Views.UserViews
             if (!isAdminValueBool)
             {
                 Console.WriteLine("Invalid admin value.");
+                Console.ReadKey(true);
                 return;
             }
 
-            //TODO: save the new user in db
             UserRepository userRepository = new UserRepository();
             userRepository.CreateUser(new User(username,password,firstName,lastName,isAdmin));
         }
