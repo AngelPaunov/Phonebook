@@ -6,6 +6,11 @@ namespace Phonebook.Views
 {
     public class AdminView
     {
+        private uint userId;
+        public AdminView(uint _userId)
+        {
+            userId = _userId;
+        }
         public void Show()
         {
             while (true)
@@ -32,7 +37,7 @@ namespace Phonebook.Views
                     userModifyView.Show();
                     return false;
                 case AdminMenuEnum.Contacts:
-                    var contactModifyView = new ContactModifyView();
+                    var contactModifyView = new ContactModifyView(userId);
                     contactModifyView.Show();
                     return false;
                 case AdminMenuEnum.Exit:

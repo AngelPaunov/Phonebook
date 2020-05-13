@@ -1,9 +1,17 @@
-﻿using System;
+﻿using Phonebook.Entities;
+using Phonebook.Repositories;
+using System;
+using System.Linq;
 
 namespace Phonebook.Views.PhoneViews
 {
     public class UpdatePhoneView
     {
+        private uint contactId;
+        public UpdatePhoneView(uint _contactId)
+        {
+            contactId = _contactId;
+        }
         public void Show()
         {
             Console.Clear();
@@ -17,21 +25,28 @@ namespace Phonebook.Views.PhoneViews
                 return;
             }
 
-            //TODO: get phone from db 
-            // if phone is null
-            Console.WriteLine("Invalid phone id. Phone not found.");
-            Console.ReadKey(true);
+            var phoneFromInput = new Phone(contactId,phoneId);
 
-            //if not null
+            var phoneRepository = new PhoneRepository();
+            phoneFromInput = phoneRepository.ReadPhone(phoneFromInput);
+            if (phoneFromInput == null)
+            {
+                Console.WriteLine("Invalid phone id. Phone not found.");
+                Console.ReadKey(true);
+                return;
+            }
+
             Console.Write("Phone number: ");
-            bool isNumber = uint.TryParse(Console.ReadLine(), out uint phoneNumber);
+            string phoneNumber = Console.ReadLine();
 
-            if (!isNumber)
+            if (!phoneNumber.All(c => c >= '0' && c <= '9') || phoneNumber.Length < 8 || phoneNumber.Length > 15)
             {
                 Console.WriteLine("Invalid phone number. Please input only positive numbers.");
                 return;
             }
-            //delete the phone in db
+            phoneFromInput.PhoneNumber = phoneNumber;
+
+            phoneRepository.UpdatePhone(phoneFromInput);
         }
     }
 }

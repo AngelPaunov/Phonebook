@@ -25,21 +25,21 @@ namespace Phonebook.Views.UserViews
             var userFromInput = new User(userInputId);
 
             UserRepository userRepository = new UserRepository();
-            var userFromRepository = userRepository.ReadUser(userFromInput);
+            userFromInput = userRepository.ReadUser(userFromInput);
 
-            if (userFromRepository == null)
+            if (userFromInput == null)
             {
                 Console.WriteLine("Invalid user id. User not found.");
                 Console.ReadKey(true);
                 return;
             }
 
-            Console.WriteLine($"ID: {userFromRepository.Id}");
-            Console.WriteLine($"Username: {userFromRepository.Username}");
-            Console.WriteLine($"Password: {userFromRepository.Password}");
-            Console.WriteLine($"First Name: {userFromRepository.FirstName}");
-            Console.WriteLine($"Last Name: {userFromRepository.LastName}");
-            Console.WriteLine($"Admin: {userFromRepository.IsAdmin}");
+            Console.WriteLine($"ID: {userFromInput.Id}");
+            Console.WriteLine($"Username: {userFromInput.Username}");
+            Console.WriteLine($"Password: {userFromInput.Password}");
+            Console.WriteLine($"First Name: {userFromInput.FirstName}");
+            Console.WriteLine($"Last Name: {userFromInput.LastName}");
+            Console.WriteLine($"Admin: {userFromInput.IsAdmin}");
 
             Console.WriteLine();
             Console.WriteLine("Press any key to continue.");

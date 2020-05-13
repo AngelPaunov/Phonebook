@@ -24,16 +24,16 @@ namespace Phonebook.Views.UserViews
             var userFromInput = new User(userInputId);
 
             UserRepository userRepository = new UserRepository();
-            var userFromRepository = userRepository.ReadUser(userFromInput);
+            userFromInput = userRepository.ReadUser(userFromInput);
 
-            if (userFromRepository == null)
+            if (userFromInput == null)
             {
                 Console.WriteLine("Invalid user id. User not found.");
                 Console.ReadKey(true);
                 return;
             }
 
-            userRepository.DeleteUser(userFromRepository);
+            userRepository.DeleteUser(userFromInput);
             Console.WriteLine("User has been deleted.");
             Console.ReadKey(true);
         }

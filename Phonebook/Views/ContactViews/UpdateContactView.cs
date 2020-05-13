@@ -1,9 +1,16 @@
-﻿using System;
+﻿using Phonebook.Entities;
+using Phonebook.Repositories;
+using System;
 
 namespace Phonebook.Views.ContactViews
 {
     public class UpdateContactView
     {
+        private uint creatorId;
+        public UpdateContactView(uint _creatorId)
+        {
+            creatorId = _creatorId;
+        }
         public void Show()
         {
             Console.Clear();
@@ -17,16 +24,22 @@ namespace Phonebook.Views.ContactViews
                 return;
             }
 
-            //TODO: get contact from db 
-            // if contact is null
-            Console.WriteLine("Invalid contact id. Contact not found.");
-            Console.ReadKey(true);
+            var contactFromInput = new Contact(creatorId,contactId);
 
-            //if not null
+            var contactRepository = new ContactRepository();
+            contactFromInput = contactRepository.ReadContact(contactFromInput);
+
+            if (contactFromInput == null)
+            {
+                Console.WriteLine("Invalid contact id. Contact not found.");
+                Console.ReadKey(true);
+                return;
+            }
+            
             Console.Write("First Name: ");
             string firstName = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(firstName))
+            if (string.IsNullOrWhiteSpace(firstName))
             {
                 Console.WriteLine("Invalid first name.");
                 return;
@@ -35,7 +48,7 @@ namespace Phonebook.Views.ContactViews
             Console.Write("Last Name: ");
             string lastName = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(lastName))
+            if (string.IsNullOrWhiteSpace(lastName))
             {
                 Console.WriteLine("Invalid last name.");
                 return;
@@ -44,13 +57,21 @@ namespace Phonebook.Views.ContactViews
             Console.Write("Email: ");
             string email = Console.ReadLine();
 
-            if (string.IsNullOrEmpty(email))
+            if (string.IsNullOrWhiteSpace(email))
             {
                 Console.WriteLine("Invalid email.");
                 return;
             }
 
-            //update the contact in db
+            contactFromInput.FirstName = firstName;
+            contactFromInput.LastName= lastName;
+            contactFromInput.Email= email;
+
+            contactRepository.UpdateContact(contactFromInput);
+
+            Console.WriteLine();
+            Console.WriteLine("Successfuly updated contact");
+            Console.ReadKey();
         }
     }
 }

@@ -1,9 +1,16 @@
-﻿using System;
+﻿using Phonebook.Entities;
+using Phonebook.Repositories;
+using System;
 
 namespace Phonebook.Views.ContactViews
 {
     public class DeleteContactView
     {
+        private uint creatorId;
+        public DeleteContactView(uint _creatorId)
+        {
+            creatorId = _creatorId;
+        }
         public void Show()
         {
             Console.WriteLine();
@@ -17,13 +24,23 @@ namespace Phonebook.Views.ContactViews
                 return;
             }
 
-            //TODO: get contact from db 
-            // if contact is null
-            Console.WriteLine("Invalid contact id. Contact not found.");
-            Console.ReadKey(true);
+            var contactFromInput = new Contact(creatorId, contactId);
 
-            //if not null
-            //delete the contact in db
+            var contactRepository = new ContactRepository();
+            contactFromInput = contactRepository.ReadContact(contactFromInput);
+
+            if (contactFromInput == null)
+            {
+                Console.WriteLine("Invalid contact id. Contact not found.");
+                Console.ReadKey(true);
+                return;
+            }
+
+            contactRepository.DeleteContact(contactFromInput);
+
+            Console.WriteLine();
+            Console.WriteLine("Successfuly deleted contact");
+            Console.ReadKey(true);
         }
     }
 }

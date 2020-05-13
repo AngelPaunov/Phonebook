@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 
 namespace Phonebook.Repositories
 {
     public class UserRepository
     {
-        private readonly string filePath = "users.csv";
+        private readonly string filePath = "users.txt";
 
         public UserRepository()
         {
@@ -69,7 +70,7 @@ namespace Phonebook.Repositories
 
         public void UpdateUser(User userToUpdate)
         {
-            string temporaryFilePath = "temporaryFile.csv";
+            string temporaryFilePath = "temporaryFile.txt";
 
             using (StreamReader reader = new StreamReader(filePath))
             {
@@ -94,7 +95,7 @@ namespace Phonebook.Repositories
 
         public void DeleteUser(User userToDelete)
         {
-            string temporaryFilePath = "temporaryFile.csv";
+            string temporaryFilePath = "temporaryFile.txt";
 
             using (StreamReader reader = new StreamReader(filePath))
             {
@@ -106,6 +107,12 @@ namespace Phonebook.Repositories
 
                         if (user.Id == userToDelete.Id)
                         {
+                            continue;
+                        }
+
+                        if (user.Id > userToDelete.Id)
+                        {
+                            writer.WriteLine($"{user.Id - 1},{user.Username},{user.Password},{user.FirstName},{user.LastName},{user.IsAdmin}");
                             continue;
                         }
 

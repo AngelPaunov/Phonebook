@@ -4,6 +4,12 @@ namespace Phonebook.Views.ContactViews
 {
     public class ContactModifyView
     {
+        private uint userId;
+        public ContactModifyView(uint _userId)
+        {
+            userId = _userId;
+        }
+
         public void Show()
         {
             while (true)
@@ -26,23 +32,23 @@ namespace Phonebook.Views.ContactViews
             switch (userChoice)
             {
                 case ModifyMenuEnum.Create:
-                    var createContactView = new CreateContactView();
+                    var createContactView = new CreateContactView(userId);
                     createContactView.Show();
                     return false;
                 case ModifyMenuEnum.ReadSingle:
-                    var readContactView = new ReadContactView();
+                    var readContactView = new ReadContactView(userId);
                     readContactView.Show();
                     return false;
                 case ModifyMenuEnum.ReadAll:
-                    var readAllContactsView = new ReadAllContactsView();
+                    var readAllContactsView = new ReadAllContactsView(userId);
                     readAllContactsView.Show();
                     return false;
                 case ModifyMenuEnum.Update:
-                    var updateContactView = new UpdateContactView();
+                    var updateContactView = new UpdateContactView(userId);
                     updateContactView.Show();
                     return false;
                 case ModifyMenuEnum.Delete:
-                    var deleteContactView = new DeleteContactView();
+                    var deleteContactView = new DeleteContactView(userId);
                     deleteContactView.Show();
                     return false;
                 case ModifyMenuEnum.Exit:
