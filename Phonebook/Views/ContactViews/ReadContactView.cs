@@ -49,18 +49,18 @@ namespace Phonebook.Views.ContactViews
 
             var input = GetChoice();
 
-            if (HandleChoice(input, contactFromInput.Id))
+            if (HandleChoice(input,contactFromInput.CreatorId, contactFromInput.Id))
             {
                 return;
             }
         }
 
-        private bool HandleChoice(ReadContactEnum userChoice, uint contactId)
+        private bool HandleChoice(ReadContactEnum userChoice, uint userId, uint contactId)
         {
             switch (userChoice)
             {
                 case ReadContactEnum.PhoneMenu:
-                    var phoneModifyView = new PhoneModifyView(contactId);
+                    var phoneModifyView = new PhoneModifyView(userId, contactId);
                     phoneModifyView.Show();
                     return false;
                 case ReadContactEnum.Continue:

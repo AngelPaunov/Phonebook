@@ -8,8 +8,10 @@ namespace Phonebook.Views.PhoneViews
     public class CreatePhoneView
     {
         private uint contactId;
-        public CreatePhoneView(uint _contactId)
+        private uint userId;
+        public CreatePhoneView(uint _userId, uint _contactId)
         {
+            userId = _userId;
             contactId = _contactId;
         }
         public void Show()
@@ -27,7 +29,7 @@ namespace Phonebook.Views.PhoneViews
             }
 
             var phoneRepository = new PhoneRepository();
-            phoneRepository.CreatePhone(new Phone(contactId, phoneNumber:phoneNumber));
+            phoneRepository.CreatePhone(new Phone(userId, contactId, phoneNumber: phoneNumber));
             Console.WriteLine("Successfuly create new phone.");
             Console.ReadKey(true);
         }

@@ -7,8 +7,10 @@ namespace Phonebook.Views.PhoneViews
     public class DeletePhoneView
     {
         private uint contactId;
-        public DeletePhoneView(uint _contactId)
+        private uint userId;
+        public DeletePhoneView(uint _userId, uint _contactId)
         {
+            userId = _userId;
             contactId = _contactId;
         }
         public void Show()
@@ -24,7 +26,7 @@ namespace Phonebook.Views.PhoneViews
                 return;
             }
 
-            var phoneFromInput = new Phone(contactId, phoneId);
+            var phoneFromInput = new Phone(userId, contactId, phoneId);
 
             var phoneRepository = new PhoneRepository();
             phoneFromInput = phoneRepository.ReadPhone(phoneFromInput);

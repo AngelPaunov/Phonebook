@@ -21,7 +21,7 @@ namespace Phonebook.Repositories
 
         public void CreatePhone(Phone newPhone)
         {
-            Phone lastPhone = ReadAllPhones().LastOrDefault();
+            Phone lastPhone = ReadAllPhones().LastOrDefault(p => p.UserId == newPhone.UserId && p.ContactId == newPhone.ContactId);
 
             if (lastPhone == null)
             {
@@ -34,7 +34,7 @@ namespace Phonebook.Repositories
 
             using (StreamWriter writer = new StreamWriter(filePath, true))
             {
-                writer.WriteLine($"{newPhone.ContactId},{newPhone.Id},{newPhone.PhoneNumber}");
+                writer.WriteLine($"{newPhone.UserId},{newPhone.ContactId},{newPhone.Id},{newPhone.PhoneNumber}");
             }
         }
 
@@ -46,7 +46,7 @@ namespace Phonebook.Repositories
                 {
                     var phone = GetPhoneFromCSVLine(reader.ReadLine());
 
-                    if (phone.Id == phoneToRead.Id)
+                    if (phone.Id == phoneToRead.Id && phone.UserId == phoneToRead.UserId && phone.ContactId == phoneToRead.ContactId)
                     {
                         return phone;
                     }
@@ -80,13 +80,13 @@ namespace Phonebook.Repositories
                     {
                         var phone = GetPhoneFromCSVLine(reader.ReadLine());
 
-                        if (phone.Id == phoneToUpdate.Id && phone.ContactId == phoneToUpdate.ContactId)
+                        if (phone.Id == phoneToUpdate.Id && phone.UserId == phoneToUpdate.UserId && phone.ContactId == phoneToUpdate.ContactId)
                         {
-                            writer.WriteLine($"{phoneToUpdate.ContactId},{phoneToUpdate.Id},{phoneToUpdate.PhoneNumber}");
+                            writer.WriteLine($"{phoneToUpdate.UserId},{phoneToUpdate.ContactId},{phoneToUpdate.Id},{phoneToUpdate.PhoneNumber}");
                             continue;
                         }
 
-                        writer.WriteLine($"{phone.ContactId},{phone.Id},{phone.PhoneNumber}");
+                        writer.WriteLine($"{phone.UserId},{phone.ContactId},{phone.Id},{phone.PhoneNumber}");
                     }
                 }
             }
@@ -105,18 +105,18 @@ namespace Phonebook.Repositories
                     {
                         var phone = GetPhoneFromCSVLine(reader.ReadLine());
 
-                        if (phone.Id == phoneToDelete.Id)
+                        if (phone.Id == phoneToDelete.Id && (phone.UserId == phoneToDelete.UserId && phone.ContactId == phoneToDelete.ContactId))
                         {
                             continue;
                         }
 
-                        if (phone.ContactId == phoneToDelete.ContactId && phone.Id > phoneToDelete.Id)
+                        if ((phone.ContactId == phoneToDelete.ContactId && phone.UserId == phoneToDelete.UserId) && phone.Id > phoneToDelete.Id)
                         {
-                            writer.WriteLine($"{phone.ContactId},{phone.Id - 1},{phone.PhoneNumber}");
+                            writer.WriteLine($"{phone.UserId},{phone.ContactId},{phone.Id},{phone.PhoneNumber}");
                             continue;
                         }
 
-                        writer.WriteLine($"{phone.ContactId},{phone.Id},{phone.PhoneNumber}");
+                        writer.WriteLine($"{phone.UserId},{phone.ContactId},{phone.Id},{phone.PhoneNumber}");
                     }
                 }
             }
@@ -127,11 +127,12 @@ namespace Phonebook.Repositories
         {
             string[] phoneData = line.Split(',');
 
-            uint contactId = uint.Parse(phoneData[0]);
-            uint phoneId = uint.Parse(phoneData[1]);
-            string phoneNumber = phoneData[2];
+            uint userId = uint.Parse(phoneData[0]);
+            uint contactId = uint.Parse(phoneData[1]);
+            uint phoneId = uint.Parse(phoneData[2]);
+            string phoneNumber = phoneData[3];
 
-            return new Phone(contactId,phoneId,phoneNumber);
+            return new Phone(userId, contactId, phoneId, phoneNumber);
         }
     }
 }

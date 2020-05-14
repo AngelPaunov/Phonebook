@@ -7,8 +7,10 @@ namespace Phonebook.Views.PhoneViews
     public class ReadPhoneView
     {
         private uint contactId;
-        public ReadPhoneView(uint _contactId)
+        private uint userId;
+        public ReadPhoneView(uint _userId, uint _contactId)
         {
+            userId = _userId;
             contactId = _contactId;
         }
         public void Show()
@@ -25,7 +27,7 @@ namespace Phonebook.Views.PhoneViews
                 return;
             }
 
-            var phoneFromInput = new Phone(contactId, phoneId);
+            var phoneFromInput = new Phone(userId, contactId, phoneId);
 
             var phoneRepository = new PhoneRepository();
             phoneFromInput = phoneRepository.ReadPhone(phoneFromInput);
@@ -35,7 +37,7 @@ namespace Phonebook.Views.PhoneViews
                 Console.ReadKey(true);
                 return;
             }
-            
+
 
             Console.WriteLine($"ID: {phoneFromInput.Id}");
             Console.WriteLine($"Phone number: {phoneFromInput.PhoneNumber}");

@@ -8,8 +8,10 @@ namespace Phonebook.Views.PhoneViews
     public class UpdatePhoneView
     {
         private uint contactId;
-        public UpdatePhoneView(uint _contactId)
+        private uint userId;
+        public UpdatePhoneView(uint _userId, uint _contactId)
         {
+            userId = _userId;
             contactId = _contactId;
         }
         public void Show()
@@ -25,7 +27,7 @@ namespace Phonebook.Views.PhoneViews
                 return;
             }
 
-            var phoneFromInput = new Phone(contactId,phoneId);
+            var phoneFromInput = new Phone(userId, contactId, phoneId);
 
             var phoneRepository = new PhoneRepository();
             phoneFromInput = phoneRepository.ReadPhone(phoneFromInput);

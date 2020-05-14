@@ -13,11 +13,13 @@ namespace Phonebook.Entities
         {
             PhoneNumber = phoneNumber;
         }
-        public Phone(uint contactId, uint id = 0, string phoneNumber = null) : this(phoneNumber)
+        public Phone(uint userId, uint contactId, uint id = 0, string phoneNumber = null) : this(phoneNumber)
         {
             base.Id = id;
+            this.UserId = userId;
             this.ContactId = contactId;
         }
+        public uint UserId { get; set; }
         public uint ContactId { get; set; }
         public string PhoneNumber { get; set; }
     }

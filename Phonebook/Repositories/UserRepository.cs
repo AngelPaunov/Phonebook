@@ -8,7 +8,7 @@ namespace Phonebook.Repositories
 {
     public class UserRepository
     {
-        private readonly string filePath = "users.txt";
+        private readonly string filePath = "Users.txt";
 
         public UserRepository()
         {

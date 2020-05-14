@@ -4,7 +4,7 @@ using System;
 
 namespace Phonebook.Views.UserViews
 {
-    public class DeleteUserView:BaseUserView
+    public class DeleteUserView : BaseUserView
     {
         public void Show()
         {

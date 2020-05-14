@@ -5,8 +5,10 @@ namespace Phonebook.Views.PhoneViews
     public class PhoneModifyView
     {
         private uint contactId;
-        public PhoneModifyView(uint _contactId)
+        private uint userId;
+        public PhoneModifyView(uint _userId, uint _contactId)
         {
+            userId = _userId;
             contactId = _contactId;
         }
         public void Show()
@@ -31,23 +33,23 @@ namespace Phonebook.Views.PhoneViews
             switch (userChoice)
             {
                 case ModifyMenuEnum.Create:
-                    var createPhoneView = new CreatePhoneView(contactId);
+                    var createPhoneView = new CreatePhoneView(userId, contactId);
                     createPhoneView.Show();
                     return false;
                 case ModifyMenuEnum.ReadSingle:
-                    var readPhoneView = new ReadPhoneView(contactId);
+                    var readPhoneView = new ReadPhoneView(userId, contactId);
                     readPhoneView.Show();
                     return false;
                 case ModifyMenuEnum.ReadAll:
-                    var readAllPhonesView = new ReadAllPhonesView(contactId);
+                    var readAllPhonesView = new ReadAllPhonesView(userId, contactId);
                     readAllPhonesView.Show();
                     return false;
                 case ModifyMenuEnum.Update:
-                    var updatePhoneView = new UpdatePhoneView(contactId);
+                    var updatePhoneView = new UpdatePhoneView(userId, contactId);
                     updatePhoneView.Show();
                     return false;
                 case ModifyMenuEnum.Delete:
-                    var deletePhoneView = new DeletePhoneView(contactId);
+                    var deletePhoneView = new DeletePhoneView(userId, contactId);
                     deletePhoneView.Show();
                     return false;
                 case ModifyMenuEnum.Exit:
