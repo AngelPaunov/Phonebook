@@ -1,41 +1,36 @@
 ﻿using Phonebook.Entities;
-using Phonebook.Repositories;
 using Phonebook.Views.PhoneViews;
 using System;
 
 namespace Phonebook.Views.ContactViews
 {
-    public class ReadContactView
+    public class ReadContactView : BaseContactView
     {
-        private uint creatorId;
-        public ReadContactView(uint _creatorId)
+        private readonly IPhoneRepository phoneRepository;
+
+        public ReadContactView(uint creatorId, IContactRepository contactRepository, IPhoneRepository phoneRepository) : base(contactRepository, creatorId)
         {
-            creatorId = _creatorId;
+            this.phoneRepository = phoneRepository;
         }
 
         public void Show()
         {
             Console.WriteLine();
 
-            Console.Write("Input contact's id which you want to check: ");
-            bool isContactIdNumber = uint.TryParse(Console.ReadLine(), out uint contactId);
-
-            if (!isContactIdNumber)
+            Console.Write("Input contact's id to check: ");
+            uint contactInputId = GetIdFromInput();
+            if (contactInputId < 1)
             {
                 Console.WriteLine("Please input positive number.");
                 Console.ReadKey();
                 return;
             }
 
-            var contactFromInput = new Contact(creatorId, contactId);
-
-            var contactRepository = new ContactRepository();
-            contactFromInput = contactRepository.ReadContact(contactFromInput);
-
+            var contactFromInput = GetContactById(contactInputId);
             if (contactFromInput == null)
             {
                 Console.WriteLine("Invalid contact id. Contact not found.");
-                Console.ReadKey();
+                Console.ReadKey(true);
                 return;
             }
 
@@ -49,7 +44,7 @@ namespace Phonebook.Views.ContactViews
 
             var input = GetChoice();
 
-            if (HandleChoice(input,contactFromInput.CreatorId, contactFromInput.Id))
+            if (HandleChoice(input, contactFromInput.CreatorId, contactFromInput.Id))
             {
                 return;
             }
@@ -60,7 +55,7 @@ namespace Phonebook.Views.ContactViews
             switch (userChoice)
             {
                 case ReadContactEnum.PhoneMenu:
-                    var phoneModifyView = new PhoneModifyView(userId, contactId);
+                    var phoneModifyView = new PhoneModifyView(phoneRepository, userId, contactId);
                     phoneModifyView.Show();
                     return false;
                 case ReadContactEnum.Continue:

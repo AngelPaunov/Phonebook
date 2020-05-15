@@ -1,24 +1,19 @@
-﻿using Phonebook.Repositories;
+﻿using Phonebook.Entities;
 using System;
 using System.Linq;
 
 namespace Phonebook.Views.ContactViews
 {
-    public class ReadAllContactsView
+    public class ReadAllContactsView : BaseContactView
     {
-        private uint creatorId;
-        public ReadAllContactsView(uint _creatorId)
-        {
-            creatorId = _creatorId;
-        }
+        public ReadAllContactsView(uint creatorId, IContactRepository contactRepository) : base(contactRepository, creatorId)
+        { }
 
         public void Show()
         {
             Console.Clear();
 
-            var contactRepository = new ContactRepository();
-
-            foreach (var contact in contactRepository.ReadAllContacts().Where(c=>c.CreatorId==creatorId))
+            foreach (var contact in contactRepository.ReadAllContacts().Where(c => c.CreatorId == creatorId))
             {
                 Console.WriteLine($"ID: {contact.Id}");
                 Console.WriteLine($"First Name: {contact.FirstName}");

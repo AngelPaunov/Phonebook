@@ -1,18 +1,13 @@
 ﻿using Phonebook.Entities;
-using Phonebook.Repositories;
 using System;
 
 namespace Phonebook.Views.PhoneViews
 {
-    public class DeletePhoneView
+    public class DeletePhoneView : BasePhoneView
     {
-        private uint contactId;
-        private uint userId;
-        public DeletePhoneView(uint _userId, uint _contactId)
-        {
-            userId = _userId;
-            contactId = _contactId;
-        }
+        public DeletePhoneView(IPhoneRepository phoneRepository, uint userId, uint contactId) : base(phoneRepository, userId, contactId)
+        { }
+
         public void Show()
         {
             Console.WriteLine();
@@ -28,7 +23,6 @@ namespace Phonebook.Views.PhoneViews
 
             var phoneFromInput = new Phone(userId, contactId, phoneId);
 
-            var phoneRepository = new PhoneRepository();
             phoneFromInput = phoneRepository.ReadPhone(phoneFromInput);
             if (phoneFromInput == null)
             {
@@ -38,6 +32,8 @@ namespace Phonebook.Views.PhoneViews
             }
 
             phoneRepository.DeletePhone(phoneFromInput);
+            Console.WriteLine("Phone has been deleted.");
+            Console.ReadKey(true);
         }
     }
 }

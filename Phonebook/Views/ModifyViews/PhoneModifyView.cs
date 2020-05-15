@@ -1,16 +1,21 @@
-﻿using System;
+﻿using Phonebook.Entities;
+using System;
 
 namespace Phonebook.Views.PhoneViews
 {
     public class PhoneModifyView
     {
-        private uint contactId;
-        private uint userId;
-        public PhoneModifyView(uint _userId, uint _contactId)
+        private readonly IPhoneRepository phoneRepository;
+        private readonly uint userId;
+        private readonly uint contactId;
+
+        public PhoneModifyView(IPhoneRepository phoneRepository, uint userId, uint contactId)
         {
-            userId = _userId;
-            contactId = _contactId;
+            this.phoneRepository = phoneRepository;
+            this.userId = userId;
+            this.contactId = contactId;
         }
+
         public void Show()
         {
             while (true)
@@ -33,23 +38,23 @@ namespace Phonebook.Views.PhoneViews
             switch (userChoice)
             {
                 case ModifyMenuEnum.Create:
-                    var createPhoneView = new CreatePhoneView(userId, contactId);
+                    var createPhoneView = new CreatePhoneView(phoneRepository, userId, contactId);
                     createPhoneView.Show();
                     return false;
                 case ModifyMenuEnum.ReadSingle:
-                    var readPhoneView = new ReadPhoneView(userId, contactId);
+                    var readPhoneView = new ReadPhoneView(phoneRepository, userId, contactId);
                     readPhoneView.Show();
                     return false;
                 case ModifyMenuEnum.ReadAll:
-                    var readAllPhonesView = new ReadAllPhonesView(userId, contactId);
+                    var readAllPhonesView = new ReadAllPhonesView(phoneRepository, userId, contactId);
                     readAllPhonesView.Show();
                     return false;
                 case ModifyMenuEnum.Update:
-                    var updatePhoneView = new UpdatePhoneView(userId, contactId);
+                    var updatePhoneView = new UpdatePhoneView(phoneRepository, userId, contactId);
                     updatePhoneView.Show();
                     return false;
                 case ModifyMenuEnum.Delete:
-                    var deletePhoneView = new DeletePhoneView(userId, contactId);
+                    var deletePhoneView = new DeletePhoneView(phoneRepository, userId, contactId);
                     deletePhoneView.Show();
                     return false;
                 case ModifyMenuEnum.Exit:

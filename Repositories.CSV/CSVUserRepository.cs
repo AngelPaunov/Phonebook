@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading;
 
-namespace Phonebook.Repositories
+namespace Phonebook.CSVRepositories
 {
-    public class UserRepository
+    public class CSVUserRepository : IUserRepository
     {
         private readonly string filePath = "Users.txt";
 
-        public UserRepository()
+        public CSVUserRepository()
         {
             if (!File.Exists(filePath))
             {

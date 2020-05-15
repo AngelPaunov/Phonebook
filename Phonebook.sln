@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonebook.Entities", "Phone
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Phonebook.Data", "Phonebook.Data\Phonebook.Data.csproj", "{2170F6A3-1108-4F31-B6AF-F41E2D464424}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", "{B20F2B36-D153-4410-8417-EB2A290C7FF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories.CSV", "Repositories.CSV\Repositories.CSV.csproj", "{AFD610B5-22BD-4FD9-A3AE-491E2D56438A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +31,16 @@ Global
 		{2170F6A3-1108-4F31-B6AF-F41E2D464424}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2170F6A3-1108-4F31-B6AF-F41E2D464424}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2170F6A3-1108-4F31-B6AF-F41E2D464424}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFD610B5-22BD-4FD9-A3AE-491E2D56438A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFD610B5-22BD-4FD9-A3AE-491E2D56438A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFD610B5-22BD-4FD9-A3AE-491E2D56438A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFD610B5-22BD-4FD9-A3AE-491E2D56438A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AFD610B5-22BD-4FD9-A3AE-491E2D56438A} = {B20F2B36-D153-4410-8417-EB2A290C7FF1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8D1DF2F-3CEA-4644-80C4-4095D17F18AB}

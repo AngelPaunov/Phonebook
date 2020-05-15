@@ -1,19 +1,14 @@
 ﻿using Phonebook.Entities;
-using Phonebook.Repositories;
 using System;
 using System.Linq;
 
 namespace Phonebook.Views.PhoneViews
 {
-    public class CreatePhoneView
+    public class CreatePhoneView : BasePhoneView
     {
-        private uint contactId;
-        private uint userId;
-        public CreatePhoneView(uint _userId, uint _contactId)
-        {
-            userId = _userId;
-            contactId = _contactId;
-        }
+        public CreatePhoneView(IPhoneRepository phoneRepository, uint userId, uint contactId) : base(phoneRepository, userId, contactId)
+        { }
+
         public void Show()
         {
             Console.WriteLine();
@@ -28,9 +23,9 @@ namespace Phonebook.Views.PhoneViews
                 return;
             }
 
-            var phoneRepository = new PhoneRepository();
             phoneRepository.CreatePhone(new Phone(userId, contactId, phoneNumber: phoneNumber));
-            Console.WriteLine("Successfuly create new phone.");
+
+            Console.WriteLine("Successfuly created new phone.");
             Console.ReadKey(true);
         }
     }

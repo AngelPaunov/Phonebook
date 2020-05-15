@@ -1,23 +1,20 @@
-﻿using Phonebook.Repositories;
+﻿using Phonebook.CSVRepositories;
+using Phonebook.Entities;
 using System;
 using System.Linq;
 
 namespace Phonebook.Views.PhoneViews
 {
-    public class ReadAllPhonesView
+    public class ReadAllPhonesView : BasePhoneView
     {
-        private uint contactId;
-        private uint userId;
-        public ReadAllPhonesView(uint _userId, uint _contactId)
-        {
-            userId = _userId;
-            contactId = _contactId;
-        }
+        public ReadAllPhonesView(IPhoneRepository phoneRepository, uint userId, uint contactId) : base(phoneRepository, userId, contactId)
+        { }
+
         public void Show()
         {
             Console.Clear();
 
-            var phoneRepository = new PhoneRepository();
+            var phoneRepository = new CSVPhoneRepository();
             foreach (var phone in phoneRepository.ReadAllPhones().Where(p => p.ContactId == contactId && p.UserId == userId))
             {
                 Console.WriteLine($"ID: {phone.Id}");
@@ -25,7 +22,7 @@ namespace Phonebook.Views.PhoneViews
             }
 
             Console.WriteLine();
-            Console.ReadKey();
+            Console.ReadKey(true);
             return;
         }
     }

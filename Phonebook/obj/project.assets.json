@@ -24,6 +24,19 @@
         "runtime": {
           "bin/placeholder/Phonebook.Entities.dll": {}
         }
+      },
+      "Repositories.CSV/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Phonebook.Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Repositories.CSV.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repositories.CSV.dll": {}
+        }
       }
     }
   },
@@ -37,12 +50,18 @@
       "type": "project",
       "path": "../Phonebook.Core/Phonebook.Entities.csproj",
       "msbuildProject": "../Phonebook.Core/Phonebook.Entities.csproj"
+    },
+    "Repositories.CSV/1.0.0": {
+      "type": "project",
+      "path": "../Repositories.CSV/Repositories.CSV.csproj",
+      "msbuildProject": "../Repositories.CSV/Repositories.CSV.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Phonebook.Data >= 1.0.0",
-      "Phonebook.Entities >= 1.0.0"
+      "Phonebook.Entities >= 1.0.0",
+      "Repositories.CSV >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -80,6 +99,9 @@
             },
             "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj": {
               "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj"
+            },
+            "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Repositories.CSV\\Repositories.CSV.csproj": {
+              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Repositories.CSV\\Repositories.CSV.csproj"
             }
           }
         }

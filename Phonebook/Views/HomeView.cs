@@ -1,9 +1,21 @@
-﻿using System;
+﻿using Phonebook.Entities;
+using System;
 
 namespace Phonebook.Views
 {
     class HomeView
     {
+        private readonly IUserRepository userRepository;
+        private readonly IContactRepository contactRepository;
+        private readonly IPhoneRepository phoneRepository;
+
+        public HomeView(IUserRepository userRepository, IContactRepository contactRepository, IPhoneRepository phoneRepository)
+        {
+            this.userRepository = userRepository;
+            this.contactRepository = contactRepository;
+            this.phoneRepository = phoneRepository;
+        }
+
         public void Show()
         {
             while (true)
@@ -30,12 +42,13 @@ namespace Phonebook.Views
             switch (userChoice)
             {
                 case MenuEnum.Login:
-                    var loginView = new LoginView();
+                    var loginView = new LoginView(userRepository, contactRepository, phoneRepository);
                     loginView.Show();
                     return false;
                 case MenuEnum.Exit:
                     return true;
                 case MenuEnum.Invalid:
+                    Console.WriteLine();
                     Console.WriteLine("Invalid choice. Please try again.");
                     Console.ReadKey(true);
                     return false;

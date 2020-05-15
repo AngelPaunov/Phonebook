@@ -1,41 +1,33 @@
 ﻿using Phonebook.Entities;
-using Phonebook.Repositories;
 using System;
 
 namespace Phonebook.Views.ContactViews
 {
-    public class UpdateContactView
+    public class UpdateContactView : BaseContactView
     {
-        private uint creatorId;
-        public UpdateContactView(uint _creatorId)
-        {
-            creatorId = _creatorId;
-        }
+        public UpdateContactView(uint creatorId, IContactRepository contactRepository) : base(contactRepository, creatorId)
+        { }
+
         public void Show()
         {
             Console.Clear();
-            Console.Write("Input contact's id to update:");
-            bool isContactIdNumber = uint.TryParse(Console.ReadLine(), out uint contactId);
-
-            if (!isContactIdNumber)
+            Console.Write("Input contact's id to update: ");
+            uint contactInputId = GetIdFromInput();
+            if (contactInputId < 1)
             {
                 Console.WriteLine("Please input positive number.");
                 Console.ReadKey();
                 return;
             }
 
-            var contactFromInput = new Contact(creatorId,contactId);
-
-            var contactRepository = new ContactRepository();
-            contactFromInput = contactRepository.ReadContact(contactFromInput);
-
+            var contactFromInput = GetContactById(contactInputId);
             if (contactFromInput == null)
             {
                 Console.WriteLine("Invalid contact id. Contact not found.");
                 Console.ReadKey(true);
                 return;
             }
-            
+
             Console.Write("First Name: ");
             string firstName = Console.ReadLine();
 
@@ -64,14 +56,14 @@ namespace Phonebook.Views.ContactViews
             }
 
             contactFromInput.FirstName = firstName;
-            contactFromInput.LastName= lastName;
-            contactFromInput.Email= email;
+            contactFromInput.LastName = lastName;
+            contactFromInput.Email = email;
 
             contactRepository.UpdateContact(contactFromInput);
 
             Console.WriteLine();
             Console.WriteLine("Successfuly updated contact");
-            Console.ReadKey();
+            Console.ReadKey(true);
         }
     }
 }

@@ -1,30 +1,29 @@
 ﻿using Phonebook.Entities;
-using Phonebook.Repositories;
+using Phonebook.CSVRepositories;
 using System;
 
 namespace Phonebook.Views.UserViews
 {
-    public class UpdateUserView
+    public class UpdateUserView : BaseUserView
     {
+        public UpdateUserView(IUserRepository userRepository) : base(userRepository)
+        { }
+
         public void Show()
         {
             Console.Clear();
-            Console.Write("Input user's id to update:");
-            bool isUserIdNumber = uint.TryParse(Console.ReadLine(), out uint userInputId);
-
-            if (!isUserIdNumber)
+            Console.Write("Input user's id to update: ");
+            uint userInputId = GetIdFromInput();
+            if (userInputId < 1)
             {
                 Console.WriteLine("Please input positive number.");
                 Console.ReadKey();
                 return;
             }
 
-            var userFromInput = new User(userInputId);
-
-            UserRepository userRepository = new UserRepository();
-            var userFromRepository = userRepository.ReadUser(userFromInput);
-
-            if (userFromRepository == null) {
+            var userFromInput = GetUserById(userInputId);
+            if (userFromInput == null)
+            {
                 Console.WriteLine("Invalid user id. User not found.");
                 Console.ReadKey(true);
                 return;
@@ -41,14 +40,30 @@ namespace Phonebook.Views.UserViews
             }
 
             Console.Write("Password: ");
-            string password = Console.ReadLine();
-
-            if (string.IsNullOrWhiteSpace(password))
+            string password = "";
+            do
             {
-                Console.Write("Invalid password.");
-                Console.ReadKey(true);
-                return;
-            }
+                ConsoleKeyInfo key = Console.ReadKey(true);
+
+                if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
+                {
+                    password += key.KeyChar;
+                    Console.Write("*");
+                }
+                else
+                {
+                    if (key.Key == ConsoleKey.Backspace && password.Length > 0)
+                    {
+                        password = password.Substring(0, (password.Length - 1));
+                        Console.Write("\b \b");
+                    }
+                    else if (key.Key == ConsoleKey.Enter)
+                    {
+                        break;
+                    }
+                }
+            } while (true);
+            Console.WriteLine();
 
             Console.Write("First Name: ");
             string firstName = Console.ReadLine();
@@ -82,6 +97,9 @@ namespace Phonebook.Views.UserViews
 
             userFromInput = new User(userInputId, username, password, firstName, lastName, isAdmin);
             userRepository.UpdateUser(userFromInput);
+
+            Console.WriteLine("User has been updated.");
+            Console.ReadKey(true);
         }
     }
 }

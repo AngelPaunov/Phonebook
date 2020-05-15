@@ -1,23 +1,18 @@
 ﻿using Phonebook.Entities;
-using Phonebook.Repositories;
 using System;
 
 namespace Phonebook.Views.PhoneViews
 {
-    public class ReadPhoneView
+    public class ReadPhoneView : BasePhoneView
     {
-        private uint contactId;
-        private uint userId;
-        public ReadPhoneView(uint _userId, uint _contactId)
-        {
-            userId = _userId;
-            contactId = _contactId;
-        }
+        public ReadPhoneView(IPhoneRepository phoneRepository, uint userId, uint contactId) : base(phoneRepository, userId, contactId)
+        { }
+
         public void Show()
         {
             Console.WriteLine();
 
-            Console.WriteLine("Input phone's id which you want to check.");
+            Console.Write("Input phone's id which you want to check: ");
             bool isPhoneIdNumber = uint.TryParse(Console.ReadLine(), out uint phoneId);
 
             if (!isPhoneIdNumber)
@@ -29,7 +24,6 @@ namespace Phonebook.Views.PhoneViews
 
             var phoneFromInput = new Phone(userId, contactId, phoneId);
 
-            var phoneRepository = new PhoneRepository();
             phoneFromInput = phoneRepository.ReadPhone(phoneFromInput);
             if (phoneFromInput == null)
             {
@@ -41,6 +35,8 @@ namespace Phonebook.Views.PhoneViews
 
             Console.WriteLine($"ID: {phoneFromInput.Id}");
             Console.WriteLine($"Phone number: {phoneFromInput.PhoneNumber}");
+
+            Console.ReadKey(true);
         }
     }
 }

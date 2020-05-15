@@ -1,16 +1,12 @@
 ﻿using Phonebook.Entities;
-using Phonebook.Repositories;
 using System;
 
 namespace Phonebook.Views.ContactViews
 {
-    public class CreateContactView
+    public class CreateContactView : BaseContactView
     {
-        private uint creatorId;
-        public CreateContactView(uint _creatorId)
-        {
-            creatorId = _creatorId;
-        }
+        public CreateContactView(uint creatorId, IContactRepository contactRepository) : base(contactRepository, creatorId)
+        { }
 
         public void Show()
         {
@@ -46,8 +42,10 @@ namespace Phonebook.Views.ContactViews
                 return;
             }
 
-            var contactRepository = new ContactRepository();
             contactRepository.CreateContact(new Contact(creatorId, firstName, lastName, email));
+
+            Console.WriteLine("Successfuly created contact.");
+            Console.ReadKey(true);
         }
     }
 }

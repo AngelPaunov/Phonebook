@@ -1,4 +1,2 @@
 1,admin,adminpass,admin,admin,True
 2,a,a,a,a,False
-3,n,b,b,b,False
-4,p,p,p,p,False

@@ -9,7 +9,8 @@
       "Phonebook/1.0.0": {
         "dependencies": {
           "Phonebook.Data": "1.0.0",
-          "Phonebook.Entities": "1.0.0"
+          "Phonebook.Entities": "1.0.0",
+          "Repositories.CSV": "1.0.0"
         },
         "runtime": {
           "Phonebook.dll": {}
@@ -27,6 +28,14 @@
         "runtime": {
           "Phonebook.Entities.dll": {}
         }
+      },
+      "Repositories.CSV/1.0.0": {
+        "dependencies": {
+          "Phonebook.Entities": "1.0.0"
+        },
+        "runtime": {
+          "Repositories.CSV.dll": {}
+        }
       }
     }
   },
@@ -42,6 +51,11 @@
       "sha512": ""
     },
     "Phonebook.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Repositories.CSV/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

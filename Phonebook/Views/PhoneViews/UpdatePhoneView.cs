@@ -1,23 +1,19 @@
 ﻿using Phonebook.Entities;
-using Phonebook.Repositories;
+using Phonebook.CSVRepositories;
 using System;
 using System.Linq;
 
 namespace Phonebook.Views.PhoneViews
 {
-    public class UpdatePhoneView
+    public class UpdatePhoneView : BasePhoneView
     {
-        private uint contactId;
-        private uint userId;
-        public UpdatePhoneView(uint _userId, uint _contactId)
-        {
-            userId = _userId;
-            contactId = _contactId;
-        }
+        public UpdatePhoneView(IPhoneRepository phoneRepository, uint userId, uint contactId) : base(phoneRepository, userId, contactId)
+        { }
+
         public void Show()
         {
             Console.Clear();
-            Console.Write("Input phone's id to update:");
+            Console.Write("Input phone's id to update: ");
             bool isPhoneIdNumber = uint.TryParse(Console.ReadLine(), out uint phoneId);
 
             if (!isPhoneIdNumber)
@@ -29,7 +25,6 @@ namespace Phonebook.Views.PhoneViews
 
             var phoneFromInput = new Phone(userId, contactId, phoneId);
 
-            var phoneRepository = new PhoneRepository();
             phoneFromInput = phoneRepository.ReadPhone(phoneFromInput);
             if (phoneFromInput == null)
             {
@@ -49,6 +44,9 @@ namespace Phonebook.Views.PhoneViews
             phoneFromInput.PhoneNumber = phoneNumber;
 
             phoneRepository.UpdatePhone(phoneFromInput);
+
+            Console.WriteLine("Phone has been updated.");
+            Console.ReadKey(true);
         }
     }
 }

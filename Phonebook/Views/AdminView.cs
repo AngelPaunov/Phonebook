@@ -1,4 +1,5 @@
-﻿using Phonebook.Views.ContactViews;
+﻿using Phonebook.Entities;
+using Phonebook.Views.ContactViews;
 using Phonebook.Views.UserViews;
 using System;
 
@@ -6,11 +7,19 @@ namespace Phonebook.Views
 {
     public class AdminView
     {
-        private uint userId;
-        public AdminView(uint _userId)
+        private readonly uint userId;
+        private readonly IUserRepository userRepository;
+        private readonly IContactRepository contactRepository;
+        private readonly IPhoneRepository phoneRepository;
+
+        public AdminView(uint _userId, IUserRepository userRepository, IContactRepository contactRepository, IPhoneRepository phoneRepository)
         {
             userId = _userId;
+            this.userRepository = userRepository;
+            this.contactRepository = contactRepository;
+            this.phoneRepository = phoneRepository;
         }
+
         public void Show()
         {
             while (true)
@@ -33,16 +42,17 @@ namespace Phonebook.Views
             switch (userChoice)
             {
                 case AdminMenuEnum.Users:
-                    var userModifyView = new UserModifyView();
+                    var userModifyView = new UserModifyView(userRepository);
                     userModifyView.Show();
                     return false;
                 case AdminMenuEnum.Contacts:
-                    var contactModifyView = new ContactModifyView(userId);
+                    var contactModifyView = new ContactModifyView(userId, contactRepository, phoneRepository);
                     contactModifyView.Show();
                     return false;
                 case AdminMenuEnum.Exit:
                     return true;
                 case AdminMenuEnum.Invalid:
+                    Console.WriteLine();
                     Console.WriteLine("Invalid choice. Please try again.");
                     Console.ReadKey();
                     return false;

@@ -1,11 +1,21 @@
 ﻿using Phonebook.Entities;
-using Phonebook.Repositories;
 using System;
 
 namespace Phonebook.Views
 {
     public class LoginView
     {
+        private readonly IUserRepository userRepository;
+        private readonly IContactRepository contactRepository;
+        private readonly IPhoneRepository phoneRepository;
+
+        public LoginView(IUserRepository userRepository, IContactRepository contactRepository, IPhoneRepository phoneRepository)
+        {
+            this.userRepository = userRepository;
+            this.contactRepository = contactRepository;
+            this.phoneRepository = phoneRepository;
+        }
+
         public void Show()
         {
             while (true)
@@ -50,11 +60,11 @@ namespace Phonebook.Views
 
                 var loginUser = new User(username, password);
 
-                UserRepository userRepository = new UserRepository();
                 var userFromRepository = userRepository.ReadUser(loginUser);
 
                 if (userFromRepository == null || userFromRepository.Password != loginUser.Password)
                 {
+                    Console.WriteLine();
                     Console.WriteLine("Invalid username or password. User not found.");
                     Console.ReadKey(true);
                     continue;
@@ -63,12 +73,12 @@ namespace Phonebook.Views
                 var isAdmin = userFromRepository.IsAdmin;
                 if (isAdmin)
                 {
-                    var adminView = new AdminView(userFromRepository.Id);
+                    var adminView = new AdminView(userFromRepository.Id, userRepository, contactRepository, phoneRepository);
                     adminView.Show();
                 }
                 else
                 {
-                    var userView = new UserView(userFromRepository.Id);
+                    var userView = new UserView(userFromRepository.Id, contactRepository, phoneRepository);
                     userView.Show();
                 }
             }

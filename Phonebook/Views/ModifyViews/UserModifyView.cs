@@ -1,13 +1,15 @@
-﻿using System;
+﻿using Phonebook.Entities;
+using System;
 
-namespace Phonebook.Views.ContactViews
+namespace Phonebook.Views.UserViews
 {
-    public class ContactModifyView
+    public class UserModifyView
     {
-        private uint userId;
-        public ContactModifyView(uint _userId)
+        private readonly IUserRepository userRepository;
+
+        public UserModifyView(IUserRepository userRepository)
         {
-            userId = _userId;
+            this.userRepository = userRepository;
         }
 
         public void Show()
@@ -32,30 +34,30 @@ namespace Phonebook.Views.ContactViews
             switch (userChoice)
             {
                 case ModifyMenuEnum.Create:
-                    var createContactView = new CreateContactView(userId);
-                    createContactView.Show();
-                    return false;
-                case ModifyMenuEnum.ReadSingle:
-                    var readContactView = new ReadContactView(userId);
-                    readContactView.Show();
+                    var createUserView = new CreateUserView(userRepository);
+                    createUserView.Show();
                     return false;
                 case ModifyMenuEnum.ReadAll:
-                    var readAllContactsView = new ReadAllContactsView(userId);
-                    readAllContactsView.Show();
+                    var readAllUserView = new ReadAllUsersView(userRepository);
+                    readAllUserView.Show();
+                    return false;
+                case ModifyMenuEnum.ReadSingle:
+                    var readUser = new ReadUserView(userRepository);
+                    readUser.Show();
                     return false;
                 case ModifyMenuEnum.Update:
-                    var updateContactView = new UpdateContactView(userId);
-                    updateContactView.Show();
+                    var updateUserView = new UpdateUserView(userRepository);
+                    updateUserView.Show();
                     return false;
                 case ModifyMenuEnum.Delete:
-                    var deleteContactView = new DeleteContactView(userId);
-                    deleteContactView.Show();
+                    var deleteUserView = new DeleteUserView(userRepository);
+                    deleteUserView.Show();
                     return false;
                 case ModifyMenuEnum.Exit:
                     return true;
                 case ModifyMenuEnum.Invalid:
-                    Console.WriteLine("Invalid choice. Please try again");
-                    Console.ReadKey();
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    Console.ReadKey(true);
                     return false;
             }
 
@@ -70,10 +72,10 @@ namespace Phonebook.Views.ContactViews
             {
                 case ConsoleKey.C:
                     return ModifyMenuEnum.Create;
-                case ConsoleKey.R:
-                    return ModifyMenuEnum.ReadSingle;
                 case ConsoleKey.A:
                     return ModifyMenuEnum.ReadAll;
+                case ConsoleKey.R:
+                    return ModifyMenuEnum.ReadSingle;
                 case ConsoleKey.U:
                     return ModifyMenuEnum.Update;
                 case ConsoleKey.D:
@@ -87,11 +89,11 @@ namespace Phonebook.Views.ContactViews
 
         private void RenderMenu()
         {
-            Console.WriteLine("[C]reate contact");
-            Console.WriteLine("[R]ead contact");
-            Console.WriteLine("Re[a]d all contact");
-            Console.WriteLine("[U]pdate contact");
-            Console.WriteLine("[D]elete contact");
+            Console.WriteLine("[C]reate user");
+            Console.WriteLine("Re[a]d all users");
+            Console.WriteLine("[R]ead single user");
+            Console.WriteLine("[U]pdate user");
+            Console.WriteLine("[D]elete user");
             Console.WriteLine("E[x]it");
         }
     }

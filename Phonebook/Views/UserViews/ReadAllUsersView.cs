@@ -1,21 +1,22 @@
-﻿using Phonebook.Repositories;
+﻿using Phonebook.CSVRepositories;
+using Phonebook.Entities;
 using System;
 
 namespace Phonebook.Views.UserViews
 {
-    public class ReadAllUsersView
+    public class ReadAllUsersView : BaseUserView
     {
+        public ReadAllUsersView(IUserRepository userRepository) : base(userRepository)
+        { }
+
         public void Show()
         {
             Console.Clear();
-
-            var userRepository = new UserRepository();
 
             foreach (var user in userRepository.ReadAllUsers())
             {
                 Console.WriteLine($"ID: {user.Id}");
                 Console.WriteLine($"Username: {user.Username}");
-                Console.WriteLine($"Password: {user.Password}");
                 Console.WriteLine($"First Name: {user.FirstName}");
                 Console.WriteLine($"Last Name: {user.LastName}");
                 Console.WriteLine($"Admin: {user.IsAdmin}");

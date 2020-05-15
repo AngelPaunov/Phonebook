@@ -1,17 +1,15 @@
 ﻿using Phonebook.Entities;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
-namespace Phonebook.Repositories
+namespace Phonebook.CSVRepositories
 {
-    public class ContactRepository
+    public class CSVContactRepository : IContactRepository
     {
         private readonly string filePath = "Contacts.txt";
 
-        public ContactRepository()
+        public CSVContactRepository()
         {
             if (!File.Exists(filePath))
             {
