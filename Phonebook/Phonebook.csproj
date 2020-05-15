@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="5.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Phonebook.Core\Phonebook.Entities.csproj" />
     <ProjectReference Include="..\Phonebook.Data\Phonebook.Data.csproj" />
     <ProjectReference Include="..\Repositories.CSV\Repositories.CSV.csproj" />

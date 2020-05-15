@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "jbbWZF+CU7ftvyeOBBAEbSHudN4nkx0VVtIqRo01/LskhwuLeslvf7eZY9Zakxu3bCJdJU+HjumnLxke5IAatw==",
+  "dgSpecHash": "f9IOYlPbhXt1VdMjLsX9zbrg14irbyLWjWe4Jl+8kWM7kJ4c6uD4WBXY4Rfnw65Fg9antAQsRevreaJSr7KajQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Ангел\\.nuget\\packages\\autofac\\5.2.0\\autofac.5.2.0.nupkg.sha512"
+  ],
   "logs": []
 }
