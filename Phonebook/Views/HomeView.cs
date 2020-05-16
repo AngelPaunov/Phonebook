@@ -1,21 +1,12 @@
-﻿using Phonebook.Entities;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Phonebook.CSVRepositories;
+using Phonebook.Entities;
 using System;
 
 namespace Phonebook.Views
 {
     class HomeView
     {
-        private readonly IUserRepository userRepository;
-        private readonly IContactRepository contactRepository;
-        private readonly IPhoneRepository phoneRepository;
-
-        public HomeView(IUserRepository userRepository, IContactRepository contactRepository, IPhoneRepository phoneRepository)
-        {
-            this.userRepository = userRepository;
-            this.contactRepository = contactRepository;
-            this.phoneRepository = phoneRepository;
-        }
-
         public void Show()
         {
             while (true)
@@ -42,7 +33,7 @@ namespace Phonebook.Views
             switch (userChoice)
             {
                 case MenuEnum.Login:
-                    var loginView = new LoginView(userRepository, contactRepository, phoneRepository);
+                    var loginView = ConfigureLoginView();
                     loginView.Show();
                     return false;
                 case MenuEnum.Exit:
@@ -75,6 +66,18 @@ namespace Phonebook.Views
         {
             Console.WriteLine("[L]ogin");
             Console.WriteLine("[E]xit");
+        }
+
+        private LoginView ConfigureLoginView()
+        {
+            var serviceProvider = new ServiceCollection()
+                .AddSingleton<IUserRepository, CSVUserRepository>()
+                .AddSingleton<IContactRepository, CSVContactRepository>()
+                .AddSingleton<IPhoneRepository, CSVPhoneRepository>()
+                .AddTransient<LoginView>()
+                .BuildServiceProvider();
+
+            return serviceProvider.GetService<LoginView>();
         }
 
         private enum MenuEnum

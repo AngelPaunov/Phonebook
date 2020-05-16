@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "f9IOYlPbhXt1VdMjLsX9zbrg14irbyLWjWe4Jl+8kWM7kJ4c6uD4WBXY4Rfnw65Fg9antAQsRevreaJSr7KajQ==",
+  "dgSpecHash": "cNyOFvoNLhD82o4dizqYM79VsZm6HjoSy8dOSm+CkUR2UBJbuRaKuAk1dphFW5eo5uRKJyasAuVQUUg/isazlA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Ангел\\.nuget\\packages\\autofac\\5.2.0\\autofac.5.2.0.nupkg.sha512"
+    "C:\\Users\\Ангел\\.nuget\\packages\\autofac\\5.2.0\\autofac.5.2.0.nupkg.sha512",
+    "C:\\Users\\Ангел\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.4\\microsoft.extensions.dependencyinjection.3.1.4.nupkg.sha512",
+    "C:\\Users\\Ангел\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.4\\microsoft.extensions.dependencyinjection.abstractions.3.1.4.nupkg.sha512"
   ],
   "logs": []
 }

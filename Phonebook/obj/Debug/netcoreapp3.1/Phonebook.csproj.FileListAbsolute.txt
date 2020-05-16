@@ -18,4 +18,6 @@ C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook\obj\Debug\netcoreapp3.1
 C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook\bin\Debug\netcoreapp3.1\Repositories.CSV.dll
 C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook\bin\Debug\netcoreapp3.1\Repositories.CSV.pdb
 C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook\bin\Debug\netcoreapp3.1\Autofac.dll
+C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\Ангел\Desktop\Exercise\Phonebook\Phonebook\obj\Debug\netcoreapp3.1\Phonebook.csproj.CoreCompileInputs.cache

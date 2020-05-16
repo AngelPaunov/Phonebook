@@ -168,6 +168,10 @@
             "Autofac": {
               "target": "Package",
               "version": "[5.2.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[3.1.4, )"
             }
           },
           "imports": [
