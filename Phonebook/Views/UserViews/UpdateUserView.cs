@@ -13,6 +13,7 @@ namespace Phonebook.Views.UserViews
         {
             Console.Clear();
             Console.Write("Input user's id to update: ");
+
             uint userInputId = GetIdFromInput();
             if (userInputId < 1)
             {
@@ -29,6 +30,15 @@ namespace Phonebook.Views.UserViews
                 return;
             }
 
+            userFromInput = GetUserFromConsole();
+            userRepository.UpdateUser(userFromInput);
+
+            Console.WriteLine("User has been updated.");
+            Console.ReadKey(true);
+        }
+
+        private User GetUserFromConsole()
+        {
             Console.Write("Username: ");
             string username = Console.ReadLine();
 
@@ -36,7 +46,7 @@ namespace Phonebook.Views.UserViews
             {
                 Console.WriteLine("Invalid username.");
                 Console.ReadKey(true);
-                return;
+                return null;
             }
 
             Console.Write("Password: ");
@@ -72,7 +82,7 @@ namespace Phonebook.Views.UserViews
             {
                 Console.WriteLine("Invalid first name.");
                 Console.ReadKey(true);
-                return;
+                return null;
             }
 
             Console.Write("Last Name: ");
@@ -82,7 +92,7 @@ namespace Phonebook.Views.UserViews
             {
                 Console.WriteLine("Invalid last name.");
                 Console.ReadKey(true);
-                return;
+                return null;
             }
 
             Console.Write("Admin (true/false): ");
@@ -92,14 +102,10 @@ namespace Phonebook.Views.UserViews
             {
                 Console.WriteLine("Invalid admin value.");
                 Console.ReadKey(true);
-                return;
+                return null;
             }
 
-            userFromInput = new User(userInputId, username, password, firstName, lastName, isAdmin);
-            userRepository.UpdateUser(userFromInput);
-
-            Console.WriteLine("User has been updated.");
-            Console.ReadKey(true);
+            return new User(username, password, firstName, lastName, isAdmin);
         }
     }
 }

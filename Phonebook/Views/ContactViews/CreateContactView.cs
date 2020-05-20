@@ -12,6 +12,15 @@ namespace Phonebook.Views.ContactViews
         {
             Console.Clear();
 
+            var contactFromConsole = GetContactFromConsole();
+            contactRepository.CreateContact(contactFromConsole);
+
+            Console.WriteLine("Successfuly created contact.");
+            Console.ReadKey(true);
+        }
+
+        private Contact GetContactFromConsole()
+        {
             Console.Write("First Name: ");
             string firstName = Console.ReadLine();
 
@@ -19,7 +28,7 @@ namespace Phonebook.Views.ContactViews
             {
                 Console.WriteLine("Invalid first name.");
                 Console.ReadKey();
-                return;
+                return null;
             }
 
             Console.Write("Last Name: ");
@@ -29,7 +38,7 @@ namespace Phonebook.Views.ContactViews
             {
                 Console.WriteLine("Invalid last name.");
                 Console.ReadKey();
-                return;
+                return null;
             }
 
             Console.Write("Email: ");
@@ -39,13 +48,10 @@ namespace Phonebook.Views.ContactViews
             {
                 Console.WriteLine("Invalid email.");
                 Console.ReadKey();
-                return;
+                return null;
             }
 
-            contactRepository.CreateContact(new Contact(creatorId, firstName, lastName, email));
-
-            Console.WriteLine("Successfuly created contact.");
-            Console.ReadKey(true);
+            return new Contact(creatorId, firstName, lastName, email);
         }
     }
 }

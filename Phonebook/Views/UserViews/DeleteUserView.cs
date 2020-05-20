@@ -13,6 +13,7 @@ namespace Phonebook.Views.UserViews
         {
             Console.WriteLine();
             Console.Write("Input user's id to delete: ");
+
             uint userInputId = GetIdFromInput();
             if (userInputId < 1)
             {

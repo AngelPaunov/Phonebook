@@ -33,7 +33,7 @@ namespace Phonebook.Views
             switch (userChoice)
             {
                 case MenuEnum.Login:
-                    var loginView = ConfigureLoginView();
+                    var loginView = new LoginView();
                     loginView.Show();
                     return false;
                 case MenuEnum.Exit:
@@ -66,18 +66,6 @@ namespace Phonebook.Views
         {
             Console.WriteLine("[L]ogin");
             Console.WriteLine("[E]xit");
-        }
-
-        private LoginView ConfigureLoginView()
-        {
-            var serviceProvider = new ServiceCollection()
-                .AddSingleton<IUserRepository, CSVUserRepository>()
-                .AddSingleton<IContactRepository, CSVContactRepository>()
-                .AddSingleton<IPhoneRepository, CSVPhoneRepository>()
-                .AddTransient<LoginView>()
-                .BuildServiceProvider();
-
-            return serviceProvider.GetService<LoginView>();
         }
 
         private enum MenuEnum

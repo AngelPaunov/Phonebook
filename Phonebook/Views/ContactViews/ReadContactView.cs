@@ -18,6 +18,7 @@ namespace Phonebook.Views.ContactViews
             Console.WriteLine();
 
             Console.Write("Input contact's id to check: ");
+
             uint contactInputId = GetIdFromInput();
             if (contactInputId < 1)
             {

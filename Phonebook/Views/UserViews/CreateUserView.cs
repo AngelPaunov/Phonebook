@@ -11,14 +11,26 @@ namespace Phonebook.Views.UserViews
         public void Show() 
         {
             Console.Clear();
+
+            var userFromConsole = GetUserFromConsole();
+            if (userFromConsole == null) return;
+
+            userRepository.CreateUser(userFromConsole);
+
+            Console.WriteLine("Successfuly created user.");
+            Console.ReadKey(true);
+        }
+
+        private User GetUserFromConsole()
+        {
             Console.Write("Username: ");
             string username = Console.ReadLine();
 
-            if(string.IsNullOrWhiteSpace(username))
+            if (string.IsNullOrWhiteSpace(username))
             {
                 Console.WriteLine("Invalid username.");
                 Console.ReadKey(true);
-                return;
+                return null;
             }
 
             Console.Write("Password: ");
@@ -54,33 +66,30 @@ namespace Phonebook.Views.UserViews
             {
                 Console.WriteLine("Invalid first name.");
                 Console.ReadKey(true);
-                return;
+                return null;
             }
 
             Console.Write("Last Name: ");
-            string lastName= Console.ReadLine();
+            string lastName = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(lastName))
             {
                 Console.WriteLine("Invalid last name.");
                 Console.ReadKey(true);
-                return;
+                return null;
             }
 
             Console.Write("Admin (true/false): ");
-            bool isAdminValueBool= bool.TryParse(Console.ReadLine(), out bool isAdmin);
+            bool isAdminValueBool = bool.TryParse(Console.ReadLine(), out bool isAdmin);
 
             if (!isAdminValueBool)
             {
                 Console.WriteLine("Invalid admin value.");
                 Console.ReadKey(true);
-                return;
+                return null;
             }
 
-            userRepository.CreateUser(new User(username,password,firstName,lastName,isAdmin));
-
-            Console.WriteLine("Successfuly created user.");
-            Console.ReadKey(true);
+            return new User(username, password, firstName, lastName, isAdmin);
         }
     }
 }

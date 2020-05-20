@@ -28,13 +28,24 @@ namespace Phonebook.Views.ContactViews
                 return;
             }
 
+            contactFromInput = GetContactFromConsole(contactFromInput.Id);
+            contactRepository.UpdateContact(contactFromInput);
+
+            Console.WriteLine();
+            Console.WriteLine("Successfuly updated contact");
+            Console.ReadKey(true);
+        }
+
+        private Contact GetContactFromConsole(uint contactId)
+        {
             Console.Write("First Name: ");
             string firstName = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(firstName))
             {
                 Console.WriteLine("Invalid first name.");
-                return;
+                Console.ReadKey();
+                return null;
             }
 
             Console.Write("Last Name: ");
@@ -43,7 +54,8 @@ namespace Phonebook.Views.ContactViews
             if (string.IsNullOrWhiteSpace(lastName))
             {
                 Console.WriteLine("Invalid last name.");
-                return;
+                Console.ReadKey();
+                return null;
             }
 
             Console.Write("Email: ");
@@ -52,18 +64,11 @@ namespace Phonebook.Views.ContactViews
             if (string.IsNullOrWhiteSpace(email))
             {
                 Console.WriteLine("Invalid email.");
-                return;
+                Console.ReadKey();
+                return null;
             }
 
-            contactFromInput.FirstName = firstName;
-            contactFromInput.LastName = lastName;
-            contactFromInput.Email = email;
-
-            contactRepository.UpdateContact(contactFromInput);
-
-            Console.WriteLine();
-            Console.WriteLine("Successfuly updated contact");
-            Console.ReadKey(true);
+            return new Contact(creatorId, firstName, lastName, email, contactId);
         }
     }
 }

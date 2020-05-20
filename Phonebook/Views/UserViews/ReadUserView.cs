@@ -14,6 +14,7 @@ namespace Phonebook.Views.UserViews
             Console.WriteLine();
 
             Console.Write("Input user's id to check: ");
+
             uint userInputId = GetIdFromInput();
             if (userInputId < 1)
             {
