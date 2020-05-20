@@ -9,14 +9,27 @@ namespace Phonebook
 {
     class Program
     {
+        private static IServiceProvider serviceProvider;
+
         static void Main(string[] args)
         {
-            var homeMenu = new HomeView();
-            homeMenu.Show();
+            ConfigureRepositories();
+            serviceProvider.GetService<HomeView>().Show();
 
             Console.Clear();
             Console.WriteLine("Thanks for using Phonebook. Have a nice day!");
             Console.ReadKey(true);
+        }
+
+        private static void ConfigureRepositories()
+        {
+            var serviceCollection = new ServiceCollection()
+                .AddScoped<IUserRepository, CSVUserRepository>()
+                .AddScoped<IContactRepository, CSVContactRepository>()
+                .AddScoped<IPhoneRepository, CSVPhoneRepository>()
+                .AddTransient<HomeView>();
+
+            serviceProvider = serviceCollection.BuildServiceProvider();
         }
     }
 }

@@ -7,13 +7,15 @@ namespace Phonebook.Views
 {
     public class LoginView
     {
-        private IServiceProvider serviceProvider;
-
-        public LoginView()
+        private readonly IUserRepository userRepository;
+        private readonly IContactRepository contactRepository;
+        private readonly IPhoneRepository phoneRepository;
+        public LoginView(IUserRepository userRepository, IContactRepository contactRepository,IPhoneRepository phoneRepository)
         {
-            ConfigureRepositories();
+            this.userRepository = userRepository;
+            this.contactRepository = contactRepository;
+            this.phoneRepository = phoneRepository;
         }
-
         public void Show()
         {
             while (true)
@@ -21,7 +23,6 @@ namespace Phonebook.Views
                 Console.Clear();
 
                 var loginUser = GetUserFromConsole();
-                var userRepository = serviceProvider.GetService<IUserRepository>();
                 var userFromRepository = userRepository.ReadUser(loginUser);
 
                 if (userFromRepository == null || userFromRepository.Password != loginUser.Password)
@@ -32,8 +33,6 @@ namespace Phonebook.Views
                     continue;
                 }
 
-                var contactRepository = serviceProvider.GetService<IContactRepository>();
-                var phoneRepository = serviceProvider.GetService<IPhoneRepository>();
                 var isAdmin = userFromRepository.IsAdmin;
                 if (isAdmin)
                 {
@@ -86,28 +85,6 @@ namespace Phonebook.Views
             } while (true);
 
             return new User(username, password);
-        }
-
-        private void ConfigureRepositories()
-        {
-            var serviceCollection = new ServiceCollection()
-                .AddScoped<IUserRepository, CSVUserRepository>()
-                .AddScoped<IContactRepository, CSVContactRepository>()
-                .AddScoped<IPhoneRepository, CSVPhoneRepository>();
-
-            serviceProvider = serviceCollection.BuildServiceProvider();
-        }
-
-        private void DisposeServices()
-        {
-            if (serviceProvider == null)
-            {
-                return;
-            }
-            if (serviceProvider is IDisposable)
-            {
-                ((IDisposable)serviceProvider).Dispose();
-            }
         }
     }
 }
