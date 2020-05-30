@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "cNyOFvoNLhD82o4dizqYM79VsZm6HjoSy8dOSm+CkUR2UBJbuRaKuAk1dphFW5eo5uRKJyasAuVQUUg/isazlA==",
+  "dgSpecHash": "4KYUtBLb7ET4nUMGAvtewf9imnuTECu0EHOWsTyMjyvjv7LN9Iieg5P7uQujMb6JF3sLT6Dwfr0NxhUuZzLEIg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.csproj",
+  "projectFilePath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook\\Phonebook.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Ангел\\.nuget\\packages\\autofac\\5.2.0\\autofac.5.2.0.nupkg.sha512",
-    "C:\\Users\\Ангел\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.4\\microsoft.extensions.dependencyinjection.3.1.4.nupkg.sha512",
-    "C:\\Users\\Ангел\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.4\\microsoft.extensions.dependencyinjection.abstractions.3.1.4.nupkg.sha512"
+    "C:\\Users\\danai\\.nuget\\packages\\autofac\\5.2.0\\autofac.5.2.0.nupkg.sha512",
+    "C:\\Users\\danai\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.4\\microsoft.extensions.dependencyinjection.3.1.4.nupkg.sha512",
+    "C:\\Users\\danai\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.4\\microsoft.extensions.dependencyinjection.abstractions.3.1.4.nupkg.sha512"
   ],
   "logs": []
 }

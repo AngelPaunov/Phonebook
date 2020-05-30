@@ -1,20 +1,17 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Phonebook.CSVRepositories;
-using Phonebook.Entities;
+﻿using Phonebook.Entities;
 using System;
 
 namespace Phonebook.Views
 {
     public class LoginView
     {
-        private readonly IUserRepository userRepository;
-        private readonly IContactRepository contactRepository;
-        private readonly IPhoneRepository phoneRepository;
-        public LoginView(IUserRepository userRepository, IContactRepository contactRepository,IPhoneRepository phoneRepository)
+        private readonly IUserRepository _userRepository;
+        private readonly IServiceProvider _serviceProvider;
+
+        public LoginView(IUserRepository userRepository, IServiceProvider serviceProvider)
         {
-            this.userRepository = userRepository;
-            this.contactRepository = contactRepository;
-            this.phoneRepository = phoneRepository;
+            this._userRepository = userRepository;
+            this._serviceProvider = serviceProvider;
         }
         public void Show()
         {
@@ -23,7 +20,7 @@ namespace Phonebook.Views
                 Console.Clear();
 
                 var loginUser = GetUserFromConsole();
-                var userFromRepository = userRepository.ReadUser(loginUser);
+                var userFromRepository = this._userRepository.ReadUser(loginUser);
 
                 if (userFromRepository == null || userFromRepository.Password != loginUser.Password)
                 {
@@ -36,13 +33,13 @@ namespace Phonebook.Views
                 var isAdmin = userFromRepository.IsAdmin;
                 if (isAdmin)
                 {
-                    var adminView = new AdminView(userFromRepository.Id, userRepository, contactRepository, phoneRepository);
-                    adminView.Show();
+                    var adminView = (AdminView)this._serviceProvider.GetService(typeof(AdminView));
+                    adminView.Show(userFromRepository.Id);
                 }
                 else
                 {
-                    var userView = new UserView(userFromRepository.Id, contactRepository, phoneRepository);
-                    userView.Show();
+                    var userView = (UserView)this._serviceProvider.GetService(typeof(UserView));
+                    userView.Show(userFromRepository.Id);
                 }
             }
         }

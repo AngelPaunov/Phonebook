@@ -1,5 +1,4 @@
-﻿using Phonebook.Entities;
-using Phonebook.Views.ContactViews;
+﻿using Phonebook.Views.ContactViews;
 using Phonebook.Views.UserViews;
 using System;
 
@@ -7,21 +6,19 @@ namespace Phonebook.Views
 {
     public class AdminView
     {
-        private readonly uint userId;
-        private readonly IUserRepository userRepository;
-        private readonly IContactRepository contactRepository;
-        private readonly IPhoneRepository phoneRepository;
+        private readonly IServiceProvider _serviceProvider;
 
-        public AdminView(uint _userId, IUserRepository userRepository, IContactRepository contactRepository, IPhoneRepository phoneRepository)
+        private uint _userId;
+
+        public AdminView(IServiceProvider serviceProvider)
         {
-            userId = _userId;
-            this.userRepository = userRepository;
-            this.contactRepository = contactRepository;
-            this.phoneRepository = phoneRepository;
+            this._serviceProvider = serviceProvider;
         }
 
-        public void Show()
+        public void Show(uint userId)
         {
+            this._userId = userId;
+
             while (true)
             {
                 Console.Clear();
@@ -42,15 +39,23 @@ namespace Phonebook.Views
             switch (userChoice)
             {
                 case AdminMenuEnum.Users:
-                    var userModifyView = new UserModifyView(userRepository);
+
+                    var userModifyView = (UserModifyView)this._serviceProvider.GetService(typeof(UserModifyView));
                     userModifyView.Show();
+
                     return false;
+
                 case AdminMenuEnum.Contacts:
-                    var contactModifyView = new ContactModifyView(userId, contactRepository, phoneRepository);
-                    contactModifyView.Show();
+
+                    var contactModifyView = (ContactModifyView)this._serviceProvider.GetService(typeof(ContactModifyView));
+                    contactModifyView.Show(this._userId);
+
                     return false;
+
                 case AdminMenuEnum.Exit:
+
                     return true;
+
                 case AdminMenuEnum.Invalid:
                     Console.WriteLine();
                     Console.WriteLine("Invalid choice. Please try again.");

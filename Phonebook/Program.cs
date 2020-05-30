@@ -1,5 +1,4 @@
-﻿using Autofac;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Phonebook.CSVRepositories;
 using Phonebook.Entities;
 using Phonebook.Views;
@@ -27,7 +26,12 @@ namespace Phonebook
                 .AddScoped<IUserRepository, CSVUserRepository>()
                 .AddScoped<IContactRepository, CSVContactRepository>()
                 .AddScoped<IPhoneRepository, CSVPhoneRepository>()
-                .AddTransient<HomeView>();
+                .AddTransient<HomeView>()
+                .AddTransient<LoginView>()
+                .AddTransient<UserView>()
+                .AddTransient<AdminView>();
+
+            // TODO: ...Register each view
 
             serviceProvider = serviceCollection.BuildServiceProvider();
         }

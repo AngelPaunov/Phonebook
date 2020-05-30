@@ -1,20 +1,16 @@
-﻿using Phonebook.Entities;
-using System;
-using System.Dynamic;
+﻿using System;
 
 namespace Phonebook.Views
 {
     public class HomeView
     {
-        private readonly IUserRepository userRepository;
-        private readonly IContactRepository contactRepository;
-        private readonly IPhoneRepository phoneRepository;
+        private readonly LoginView _loginView;
+        //private readonly IServiceProvider _provider;
 
-        public HomeView(IUserRepository userRepository, IContactRepository contactRepository, IPhoneRepository phoneRepository)
+        public HomeView(LoginView loginView/*, IServiceProvider provider*/)
         {
-            this.userRepository = userRepository;
-            this.contactRepository = contactRepository;
-            this.phoneRepository = phoneRepository;
+            this._loginView = loginView;
+            //this._provider = provider;
         }
 
         public void Show()
@@ -43,8 +39,15 @@ namespace Phonebook.Views
             switch (userChoice)
             {
                 case MenuEnum.Login:
-                    var loginView = new LoginView(userRepository, contactRepository, phoneRepository);
-                    loginView.Show();
+                    // Method 1: View is already injected in ctor
+
+                    _loginView.Show();
+
+                    // Method 2: Inject uncomment ServiceProvider injection from ctor
+
+                    //var loginView = (LoginView)this._provider.GetService(typeof(LoginView));
+                    //loginView.Show();
+
                     return false;
                 case MenuEnum.Exit:
                     return true;

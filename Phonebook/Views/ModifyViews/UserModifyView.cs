@@ -1,15 +1,14 @@
-﻿using Phonebook.Entities;
-using System;
+﻿using System;
 
 namespace Phonebook.Views.UserViews
 {
     public class UserModifyView
     {
-        private readonly IUserRepository userRepository;
+        private readonly IServiceProvider _serviceProvider;
 
-        public UserModifyView(IUserRepository userRepository)
+        public UserModifyView(IServiceProvider serviceProvider)
         {
-            this.userRepository = userRepository;
+            this._serviceProvider = serviceProvider;
         }
 
         public void Show()

@@ -1,23 +1,19 @@
-﻿using Phonebook.Entities;
-using System;
+﻿using System;
 
 namespace Phonebook.Views.ContactViews
 {
     public class ContactModifyView
     {
-        private readonly uint userId;
-        private readonly IContactRepository contactRepository;
-        private readonly IPhoneRepository phoneRepository;
+        private uint _userId;
 
-        public ContactModifyView(uint _userId, IContactRepository contactRepository, IPhoneRepository phoneRepository)
+        public ContactModifyView()
         {
-            userId = _userId;
-            this.contactRepository = contactRepository;
-            this.phoneRepository = phoneRepository;
         }
 
-        public void Show()
+        public void Show(uint userId)
         {
+            _userId = userId;
+
             while (true)
             {
                 Console.Clear();
@@ -38,23 +34,23 @@ namespace Phonebook.Views.ContactViews
             switch (userChoice)
             {
                 case ModifyMenuEnum.Create:
-                    var createContactView = new CreateContactView(userId, contactRepository);
+                    var createContactView = new CreateContactView(this._userId, contactRepository);
                     createContactView.Show();
                     return false;
                 case ModifyMenuEnum.ReadSingle:
-                    var readContactView = new ReadContactView(userId, contactRepository, phoneRepository);
+                    var readContactView = new ReadContactView(this._userId, contactRepository, phoneRepository);
                     readContactView.Show();
                     return false;
                 case ModifyMenuEnum.ReadAll:
-                    var readAllContactsView = new ReadAllContactsView(userId, contactRepository);
+                    var readAllContactsView = new ReadAllContactsView(this._userId, contactRepository);
                     readAllContactsView.Show();
                     return false;
                 case ModifyMenuEnum.Update:
-                    var updateContactView = new UpdateContactView(userId, contactRepository);
+                    var updateContactView = new UpdateContactView(this._userId, contactRepository);
                     updateContactView.Show();
                     return false;
                 case ModifyMenuEnum.Delete:
-                    var deleteContactView = new DeleteContactView(userId, contactRepository);
+                    var deleteContactView = new DeleteContactView(this._userId, contactRepository);
                     deleteContactView.Show();
                     return false;
                 case ModifyMenuEnum.Exit:

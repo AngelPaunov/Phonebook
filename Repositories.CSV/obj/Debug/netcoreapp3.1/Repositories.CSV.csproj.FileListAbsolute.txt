@@ -10,3 +10,15 @@ C:\Users\Ангел\Desktop\Exercise\Phonebook\Repositories.CSV\obj\Debug\netcor
 C:\Users\Ангел\Desktop\Exercise\Phonebook\Repositories.CSV\obj\Debug\netcoreapp3.1\Repositories.CSV.csproj.CopyComplete
 C:\Users\Ангел\Desktop\Exercise\Phonebook\Repositories.CSV\obj\Debug\netcoreapp3.1\Repositories.CSV.dll
 C:\Users\Ангел\Desktop\Exercise\Phonebook\Repositories.CSV\obj\Debug\netcoreapp3.1\Repositories.CSV.pdb
+C:\Users\danai\Desktop\PersProj\Phonebook\Repositories.CSV\bin\Debug\netcoreapp3.1\Repositories.CSV.deps.json
+C:\Users\danai\Desktop\PersProj\Phonebook\Repositories.CSV\bin\Debug\netcoreapp3.1\Repositories.CSV.dll
+C:\Users\danai\Desktop\PersProj\Phonebook\Repositories.CSV\bin\Debug\netcoreapp3.1\Repositories.CSV.pdb
+C:\Users\danai\Desktop\PersProj\Phonebook\Repositories.CSV\bin\Debug\netcoreapp3.1\Phonebook.Entities.dll
+C:\Users\danai\Desktop\PersProj\Phonebook\Repositories.CSV\bin\Debug\netcoreapp3.1\Phonebook.Entities.pdb
+C:\Users\danai\Desktop\PersProj\Phonebook\Repositories.CSV\obj\Debug\netcoreapp3.1\Repositories.CSV.csprojAssemblyReference.cache
+C:\Users\danai\Desktop\PersProj\Phonebook\Repositories.CSV\obj\Debug\netcoreapp3.1\Repositories.CSV.csproj.CoreCompileInputs.cache
+C:\Users\danai\Desktop\PersProj\Phonebook\Repositories.CSV\obj\Debug\netcoreapp3.1\Repositories.CSV.AssemblyInfoInputs.cache
+C:\Users\danai\Desktop\PersProj\Phonebook\Repositories.CSV\obj\Debug\netcoreapp3.1\Repositories.CSV.AssemblyInfo.cs
+C:\Users\danai\Desktop\PersProj\Phonebook\Repositories.CSV\obj\Debug\netcoreapp3.1\Repositories.CSV.csproj.CopyComplete
+C:\Users\danai\Desktop\PersProj\Phonebook\Repositories.CSV\obj\Debug\netcoreapp3.1\Repositories.CSV.dll
+C:\Users\danai\Desktop\PersProj\Phonebook\Repositories.CSV\obj\Debug\netcoreapp3.1\Repositories.CSV.pdb

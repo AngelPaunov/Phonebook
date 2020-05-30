@@ -27,23 +27,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ангел\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\danai\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj",
+      "projectUniqueName": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj",
       "projectName": "Phonebook.Data",
-      "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj",
-      "packagesPath": "C:\\Users\\Ангел\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Data\\obj\\",
+      "projectPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj",
+      "packagesPath": "C:\\Users\\danai\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Data\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Ангел\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\danai\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -56,8 +52,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
-              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj"
+            "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
+              "projectPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj"
             }
           }
         }
@@ -85,7 +81,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
