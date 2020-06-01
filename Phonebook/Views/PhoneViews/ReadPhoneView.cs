@@ -5,10 +5,10 @@ namespace Phonebook.Views.PhoneViews
 {
     public class ReadPhoneView : BasePhoneView
     {
-        public ReadPhoneView(IPhoneRepository phoneRepository, uint userId, uint contactId) : base(phoneRepository, userId, contactId)
+        public ReadPhoneView(IPhoneRepository phoneRepository) : base(phoneRepository)
         { }
 
-        public void Show()
+        public void Show(uint userId, uint contactId)
         {
             Console.WriteLine();
 

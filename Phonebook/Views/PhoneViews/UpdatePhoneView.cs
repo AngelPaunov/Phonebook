@@ -1,5 +1,5 @@
 ﻿using Phonebook.Entities;
-using Phonebook.CSVRepositories;
+using Phonebook.Repositories.CSV;
 using System;
 using System.Linq;
 
@@ -7,10 +7,10 @@ namespace Phonebook.Views.PhoneViews
 {
     public class UpdatePhoneView : BasePhoneView
     {
-        public UpdatePhoneView(IPhoneRepository phoneRepository, uint userId, uint contactId) : base(phoneRepository, userId, contactId)
+        public UpdatePhoneView(IPhoneRepository phoneRepository) : base(phoneRepository)
         { }
 
-        public void Show()
+        public void Show(uint userId, uint contactId)
         {
             Console.Clear();
             Console.Write("Input phone's id to update: ");

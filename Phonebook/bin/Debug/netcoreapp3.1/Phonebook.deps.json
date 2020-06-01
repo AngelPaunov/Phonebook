@@ -8,22 +8,15 @@
     ".NETCoreApp,Version=v3.1": {
       "Phonebook/1.0.0": {
         "dependencies": {
-          "Autofac": "5.2.0",
           "Microsoft.Extensions.DependencyInjection": "3.1.4",
           "Phonebook.Data": "1.0.0",
           "Phonebook.Entities": "1.0.0",
-          "Repositories.CSV": "1.0.0"
+          "Repositories.CSV": "1.0.0",
+          "Repositories.JSON": "1.0.0",
+          "Repositories.XML": "1.0.0"
         },
         "runtime": {
           "Phonebook.dll": {}
-        }
-      },
-      "Autofac/5.2.0": {
-        "runtime": {
-          "lib/netstandard2.1/Autofac.dll": {
-            "assemblyVersion": "5.2.0.0",
-            "fileVersion": "5.2.0.0"
-          }
         }
       },
       "Microsoft.Extensions.DependencyInjection/3.1.4": {
@@ -42,6 +35,14 @@
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
             "assemblyVersion": "3.1.4.0",
             "fileVersion": "3.100.420.21409"
+          }
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
           }
         }
       },
@@ -65,6 +66,23 @@
         "runtime": {
           "Repositories.CSV.dll": {}
         }
+      },
+      "Repositories.JSON/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "Phonebook.Entities": "1.0.0"
+        },
+        "runtime": {
+          "Repositories.JSON.dll": {}
+        }
+      },
+      "Repositories.XML/1.0.0": {
+        "dependencies": {
+          "Phonebook.Entities": "1.0.0"
+        },
+        "runtime": {
+          "Repositories.XML.dll": {}
+        }
       }
     }
   },
@@ -73,13 +91,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "Autofac/5.2.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-V8dBH0dsv75uDzl7Sw+HkhKDPUw2eXnlMjcSVMH+tLo2s67MpTKGyDj1pDcpR+IF2u4YRs0s3/x7R88YJzIWvg==",
-      "path": "autofac/5.2.0",
-      "hashPath": "autofac.5.2.0.nupkg.sha512"
     },
     "Microsoft.Extensions.DependencyInjection/3.1.4": {
       "type": "package",
@@ -95,6 +106,13 @@
       "path": "microsoft.extensions.dependencyinjection.abstractions/3.1.4",
       "hashPath": "microsoft.extensions.dependencyinjection.abstractions.3.1.4.nupkg.sha512"
     },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    },
     "Phonebook.Data/1.0.0": {
       "type": "project",
       "serviceable": false,
@@ -106,6 +124,16 @@
       "sha512": ""
     },
     "Repositories.CSV/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Repositories.JSON/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Repositories.XML/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

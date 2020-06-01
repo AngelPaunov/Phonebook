@@ -8,14 +8,10 @@ namespace Phonebook.Views.PhoneViews
     public class BasePhoneView
     {
         protected IPhoneRepository phoneRepository;
-        protected uint userId;
-        protected uint contactId;
 
-        public BasePhoneView(IPhoneRepository phoneRepository, uint userId, uint contactId)
+        public BasePhoneView(IPhoneRepository phoneRepository)
         {
             this.phoneRepository = phoneRepository;
-            this.userId = userId;
-            this.contactId = contactId;
         }
     }
 }

@@ -5,10 +5,10 @@ namespace Phonebook.Views.PhoneViews
 {
     public class DeletePhoneView : BasePhoneView
     {
-        public DeletePhoneView(IPhoneRepository phoneRepository, uint userId, uint contactId) : base(phoneRepository, userId, contactId)
+        public DeletePhoneView(IPhoneRepository phoneRepository) : base(phoneRepository)
         { }
 
-        public void Show()
+        public void Show(uint userId, uint contactId)
         {
             Console.WriteLine();
             Console.Write("Input phone's id to delete: ");

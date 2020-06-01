@@ -4,10 +4,12 @@ namespace Phonebook.Views.ContactViews
 {
     public class ContactModifyView
     {
+        private readonly IServiceProvider _serviceProvider;
         private uint _userId;
 
-        public ContactModifyView()
+        public ContactModifyView(IServiceProvider serviceProvider)
         {
+            this._serviceProvider = serviceProvider;
         }
 
         public void Show(uint userId)
@@ -34,24 +36,24 @@ namespace Phonebook.Views.ContactViews
             switch (userChoice)
             {
                 case ModifyMenuEnum.Create:
-                    var createContactView = new CreateContactView(this._userId, contactRepository);
-                    createContactView.Show();
+                    var createContactView = (CreateContactView)_serviceProvider.GetService(typeof(CreateContactView));
+                    createContactView.Show(_userId);
                     return false;
                 case ModifyMenuEnum.ReadSingle:
-                    var readContactView = new ReadContactView(this._userId, contactRepository, phoneRepository);
-                    readContactView.Show();
+                    var readContactView = (ReadContactView)_serviceProvider.GetService(typeof(ReadContactView));
+                    readContactView.Show(_userId);
                     return false;
                 case ModifyMenuEnum.ReadAll:
-                    var readAllContactsView = new ReadAllContactsView(this._userId, contactRepository);
-                    readAllContactsView.Show();
+                    var readAllContactsView = (ReadAllContactsView)_serviceProvider.GetService(typeof(ReadAllContactsView));
+                    readAllContactsView.Show(_userId);
                     return false;
                 case ModifyMenuEnum.Update:
-                    var updateContactView = new UpdateContactView(this._userId, contactRepository);
-                    updateContactView.Show();
+                    var updateContactView = (UpdateContactView)_serviceProvider.GetService(typeof(UpdateContactView));
+                    updateContactView.Show(_userId);
                     return false;
                 case ModifyMenuEnum.Delete:
-                    var deleteContactView = new DeleteContactView(this._userId, contactRepository);
-                    deleteContactView.Show();
+                    var deleteContactView = (DeleteContactView)_serviceProvider.GetService(typeof(DeleteContactView));
+                    deleteContactView.Show(_userId);
                     return false;
                 case ModifyMenuEnum.Exit:
                     return true;

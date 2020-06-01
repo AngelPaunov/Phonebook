@@ -1,5 +1,5 @@
-﻿using Phonebook.CSVRepositories;
-using Phonebook.Entities;
+﻿using Phonebook.Entities;
+using Phonebook.Repositories.CSV;
 using System;
 using System.Linq;
 
@@ -7,14 +7,13 @@ namespace Phonebook.Views.PhoneViews
 {
     public class ReadAllPhonesView : BasePhoneView
     {
-        public ReadAllPhonesView(IPhoneRepository phoneRepository, uint userId, uint contactId) : base(phoneRepository, userId, contactId)
+        public ReadAllPhonesView(IPhoneRepository phoneRepository) : base(phoneRepository)
         { }
 
-        public void Show()
+        public void Show(uint userId, uint contactId)
         {
             Console.Clear();
 
-            var phoneRepository = new CSVPhoneRepository();
             foreach (var phone in phoneRepository.ReadAllPhones().Where(p => p.ContactId == contactId && p.UserId == userId))
             {
                 Console.WriteLine($"ID: {phone.Id}");

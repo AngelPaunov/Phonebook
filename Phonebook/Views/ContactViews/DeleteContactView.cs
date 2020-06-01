@@ -5,10 +5,10 @@ namespace Phonebook.Views.ContactViews
 {
     public class DeleteContactView : BaseContactView
     {
-        public DeleteContactView(uint creatorId, IContactRepository contactRepository) : base(contactRepository, creatorId)
+        public DeleteContactView(IContactRepository contactRepository) : base(contactRepository)
         { }
 
-        public void Show()
+        public void Show(uint creatorId)
         {
             Console.WriteLine();
             Console.Write("Input contact's id to delete: ");
@@ -21,7 +21,7 @@ namespace Phonebook.Views.ContactViews
                 return;
             }
 
-            var contactFromInput = GetContactById(contactInputId);
+            var contactFromInput = GetContactById(creatorId, contactInputId);
             if (contactFromInput == null)
             {
                 Console.WriteLine("Invalid contact id. Contact not found.");

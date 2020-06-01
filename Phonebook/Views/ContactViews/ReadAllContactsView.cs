@@ -6,10 +6,10 @@ namespace Phonebook.Views.ContactViews
 {
     public class ReadAllContactsView : BaseContactView
     {
-        public ReadAllContactsView(uint creatorId, IContactRepository contactRepository) : base(contactRepository, creatorId)
+        public ReadAllContactsView(IContactRepository contactRepository) : base(contactRepository)
         { }
 
-        public void Show()
+        public void Show(uint creatorId)
         {
             Console.Clear();
 

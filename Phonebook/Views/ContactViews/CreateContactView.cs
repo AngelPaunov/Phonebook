@@ -5,12 +5,15 @@ namespace Phonebook.Views.ContactViews
 {
     public class CreateContactView : BaseContactView
     {
-        public CreateContactView(uint creatorId, IContactRepository contactRepository) : base(contactRepository, creatorId)
+        public CreateContactView(IContactRepository contactRepository) : base(contactRepository)
         { }
 
-        public void Show()
+        private uint _creatorId;
+
+        public void Show(uint creatorId)
         {
             Console.Clear();
+            this._creatorId = creatorId;
 
             var contactFromConsole = GetContactFromConsole();
             contactRepository.CreateContact(contactFromConsole);
@@ -51,7 +54,7 @@ namespace Phonebook.Views.ContactViews
                 return null;
             }
 
-            return new Contact(creatorId, firstName, lastName, email);
+            return new Contact(_creatorId, firstName, lastName, email);
         }
     }
 }

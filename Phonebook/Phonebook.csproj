@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="5.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.4" />
   </ItemGroup>
 
@@ -14,6 +13,8 @@
     <ProjectReference Include="..\Phonebook.Core\Phonebook.Entities.csproj" />
     <ProjectReference Include="..\Phonebook.Data\Phonebook.Data.csproj" />
     <ProjectReference Include="..\Repositories.CSV\Repositories.CSV.csproj" />
+    <ProjectReference Include="..\Repositories.JSON\Repositories.JSON.csproj" />
+    <ProjectReference Include="..\Repositories.XML\Repositories.XML.csproj" />
   </ItemGroup>
 
 </Project>

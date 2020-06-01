@@ -1,5 +1,4 @@
 ﻿using Phonebook.Entities;
-using Phonebook.CSVRepositories;
 using System;
 
 namespace Phonebook.Views.UserViews
@@ -31,7 +30,8 @@ namespace Phonebook.Views.UserViews
             }
 
             userFromInput = GetUserFromConsole();
-            userRepository.UpdateUser(userFromInput);
+            userFromInput.Id = userInputId;
+            _userRepository.UpdateUser(userFromInput);
 
             Console.WriteLine("User has been updated.");
             Console.ReadKey(true);

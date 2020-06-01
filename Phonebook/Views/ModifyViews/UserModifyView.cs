@@ -33,23 +33,23 @@ namespace Phonebook.Views.UserViews
             switch (userChoice)
             {
                 case ModifyMenuEnum.Create:
-                    var createUserView = new CreateUserView(userRepository);
+                    var createUserView = (CreateUserView)_serviceProvider.GetService(typeof(CreateUserView));
                     createUserView.Show();
                     return false;
                 case ModifyMenuEnum.ReadAll:
-                    var readAllUserView = new ReadAllUsersView(userRepository);
+                    var readAllUserView = (ReadAllUsersView)_serviceProvider.GetService(typeof(ReadAllUsersView));
                     readAllUserView.Show();
                     return false;
                 case ModifyMenuEnum.ReadSingle:
-                    var readUser = new ReadUserView(userRepository);
+                    var readUser = (ReadUserView)_serviceProvider.GetService(typeof(ReadUserView));
                     readUser.Show();
                     return false;
                 case ModifyMenuEnum.Update:
-                    var updateUserView = new UpdateUserView(userRepository);
+                    var updateUserView = (UpdateUserView)_serviceProvider.GetService(typeof(UpdateUserView));
                     updateUserView.Show();
                     return false;
                 case ModifyMenuEnum.Delete:
-                    var deleteUserView = new DeleteUserView(userRepository);
+                    var deleteUserView = (DeleteUserView)_serviceProvider.GetService(typeof(DeleteUserView));
                     deleteUserView.Show();
                     return false;
                 case ModifyMenuEnum.Exit:

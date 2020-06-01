@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "DgxS1kBi4GRCe5Zvp/2WfotFGZIbPIiUx0gnD3N6nd+ML+BmwkHYmTqixHldvhzMrLNmIjfLEIT72NUC9fGZtg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.JSON\\Repositories.JSON.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ангел\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

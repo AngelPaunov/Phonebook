@@ -6,12 +6,10 @@ namespace Phonebook.Views.ContactViews
     public class BaseContactView
     {
         protected IContactRepository contactRepository;
-        protected uint creatorId;
 
-        public BaseContactView(IContactRepository contactRepository, uint creatorId)
+        public BaseContactView(IContactRepository contactRepository)
         {
             this.contactRepository = contactRepository;
-            this.creatorId = creatorId;
         }
 
         protected uint GetIdFromInput()
@@ -28,7 +26,7 @@ namespace Phonebook.Views.ContactViews
             return contactId;
         }
 
-        protected Contact GetContactById(uint contactId)
+        protected Contact GetContactById(uint creatorId, uint contactId)
         {
             var contactFromInput = new Contact(creatorId, contactId);
 

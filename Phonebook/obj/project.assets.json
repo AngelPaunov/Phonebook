@@ -2,15 +2,6 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "Autofac/5.2.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.1/Autofac.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.1/Autofac.dll": {}
-        }
-      },
       "Microsoft.Extensions.DependencyInjection/3.1.4": {
         "type": "package",
         "dependencies": {
@@ -30,6 +21,15 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {}
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "Phonebook.Data/1.0.0": {
@@ -67,31 +67,37 @@
         "runtime": {
           "bin/placeholder/Repositories.CSV.dll": {}
         }
+      },
+      "Repositories.JSON/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3",
+          "Phonebook.Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Repositories.JSON.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repositories.JSON.dll": {}
+        }
+      },
+      "Repositories.XML/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Phonebook.Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Repositories.XML.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repositories.XML.dll": {}
+        }
       }
     }
   },
   "libraries": {
-    "Autofac/5.2.0": {
-      "sha512": "V8dBH0dsv75uDzl7Sw+HkhKDPUw2eXnlMjcSVMH+tLo2s67MpTKGyDj1pDcpR+IF2u4YRs0s3/x7R88YJzIWvg==",
-      "type": "package",
-      "path": "autofac/5.2.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "autofac.5.2.0.nupkg.sha512",
-        "autofac.nuspec",
-        "icon.png",
-        "lib/net461/Autofac.dll",
-        "lib/net461/Autofac.pdb",
-        "lib/net461/Autofac.xml",
-        "lib/netstandard2.0/Autofac.dll",
-        "lib/netstandard2.0/Autofac.pdb",
-        "lib/netstandard2.0/Autofac.xml",
-        "lib/netstandard2.1/Autofac.dll",
-        "lib/netstandard2.1/Autofac.pdb",
-        "lib/netstandard2.1/Autofac.xml"
-      ]
-    },
     "Microsoft.Extensions.DependencyInjection/3.1.4": {
       "sha512": "dAWhz6BEjUFIVLUPbT1s1sUrPTwbUWdw2iBRRe3ej3xXcKS+oo64dKrIWFxRjYP6TWyESpGFNY5NGeA5FcHVlg==",
       "type": "package",
@@ -126,6 +132,37 @@
         "microsoft.extensions.dependencyinjection.abstractions.nuspec"
       ]
     },
+    "Newtonsoft.Json/12.0.3": {
+      "sha512": "6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "type": "package",
+      "path": "newtonsoft.json/12.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.12.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "Phonebook.Data/1.0.0": {
       "type": "project",
       "path": "../Phonebook.Data/Phonebook.Data.csproj",
@@ -140,31 +177,46 @@
       "type": "project",
       "path": "../Repositories.CSV/Repositories.CSV.csproj",
       "msbuildProject": "../Repositories.CSV/Repositories.CSV.csproj"
+    },
+    "Repositories.JSON/1.0.0": {
+      "type": "project",
+      "path": "../Repositories.JSON/Repositories.JSON.csproj",
+      "msbuildProject": "../Repositories.JSON/Repositories.JSON.csproj"
+    },
+    "Repositories.XML/1.0.0": {
+      "type": "project",
+      "path": "../Repositories.XML/Repositories.XML.csproj",
+      "msbuildProject": "../Repositories.XML/Repositories.XML.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Autofac >= 5.2.0",
       "Microsoft.Extensions.DependencyInjection >= 3.1.4",
       "Phonebook.Data >= 1.0.0",
       "Phonebook.Entities >= 1.0.0",
-      "Repositories.CSV >= 1.0.0"
+      "Repositories.CSV >= 1.0.0",
+      "Repositories.JSON >= 1.0.0",
+      "Repositories.XML >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\danai\\.nuget\\packages\\": {}
+    "C:\\Users\\Ангел\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook\\Phonebook.csproj",
+      "projectUniqueName": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook\\Phonebook.csproj",
       "projectName": "Phonebook",
-      "projectPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook\\Phonebook.csproj",
-      "packagesPath": "C:\\Users\\danai\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook\\obj\\",
+      "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook\\Phonebook.csproj",
+      "packagesPath": "C:\\Users\\Ангел\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\danai\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ангел\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -177,14 +229,20 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
-              "projectPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj"
+            "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
+              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj"
             },
-            "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj": {
-              "projectPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj"
+            "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj": {
+              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj"
             },
-            "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Repositories.CSV\\Repositories.CSV.csproj": {
-              "projectPath": "C:\\Users\\danai\\Desktop\\PersProj\\Phonebook\\Repositories.CSV\\Repositories.CSV.csproj"
+            "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.CSV\\Repositories.CSV.csproj": {
+              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.CSV\\Repositories.CSV.csproj"
+            },
+            "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.JSON\\Repositories.JSON.csproj": {
+              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.JSON\\Repositories.JSON.csproj"
+            },
+            "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.XML\\Repositories.XML.csproj": {
+              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.XML\\Repositories.XML.csproj"
             }
           }
         }
@@ -198,10 +256,6 @@
     "frameworks": {
       "netcoreapp3.1": {
         "dependencies": {
-          "Autofac": {
-            "target": "Package",
-            "version": "[5.2.0, )"
-          },
           "Microsoft.Extensions.DependencyInjection": {
             "target": "Package",
             "version": "[3.1.4, )"
@@ -222,7 +276,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

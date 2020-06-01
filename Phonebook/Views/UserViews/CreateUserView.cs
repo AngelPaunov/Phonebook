@@ -1,5 +1,4 @@
 ﻿using Phonebook.Entities;
-using Phonebook.CSVRepositories;
 using System;
 
 namespace Phonebook.Views.UserViews
@@ -15,7 +14,7 @@ namespace Phonebook.Views.UserViews
             var userFromConsole = GetUserFromConsole();
             if (userFromConsole == null) return;
 
-            userRepository.CreateUser(userFromConsole);
+            _userRepository.CreateUser(userFromConsole);
 
             Console.WriteLine("Successfuly created user.");
             Console.ReadKey(true);

@@ -5,12 +5,15 @@ namespace Phonebook.Views.ContactViews
 {
     public class UpdateContactView : BaseContactView
     {
-        public UpdateContactView(uint creatorId, IContactRepository contactRepository) : base(contactRepository, creatorId)
+        public UpdateContactView(IContactRepository contactRepository) : base(contactRepository)
         { }
 
-        public void Show()
+        private uint _creatorId;
+
+        public void Show(uint creatorId)
         {
             Console.Clear();
+            _creatorId = creatorId;
             Console.Write("Input contact's id to update: ");
             uint contactInputId = GetIdFromInput();
             if (contactInputId < 1)
@@ -20,7 +23,7 @@ namespace Phonebook.Views.ContactViews
                 return;
             }
 
-            var contactFromInput = GetContactById(contactInputId);
+            var contactFromInput = GetContactById(creatorId, contactInputId);
             if (contactFromInput == null)
             {
                 Console.WriteLine("Invalid contact id. Contact not found.");
@@ -68,7 +71,7 @@ namespace Phonebook.Views.ContactViews
                 return null;
             }
 
-            return new Contact(creatorId, firstName, lastName, email, contactId);
+            return new Contact(_creatorId, firstName, lastName, email, contactId);
         }
     }
 }

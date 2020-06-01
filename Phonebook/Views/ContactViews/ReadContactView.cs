@@ -7,13 +7,15 @@ namespace Phonebook.Views.ContactViews
     public class ReadContactView : BaseContactView
     {
         private readonly IPhoneRepository phoneRepository;
+        private readonly IServiceProvider _serviceProvider;
 
-        public ReadContactView(uint creatorId, IContactRepository contactRepository, IPhoneRepository phoneRepository) : base(contactRepository, creatorId)
+        public ReadContactView(IServiceProvider serviceProvider, IContactRepository contactRepository, IPhoneRepository phoneRepository) : base(contactRepository)
         {
+            this._serviceProvider = serviceProvider;
             this.phoneRepository = phoneRepository;
         }
 
-        public void Show()
+        public void Show(uint creatorId)
         {
             Console.WriteLine();
 
@@ -27,7 +29,7 @@ namespace Phonebook.Views.ContactViews
                 return;
             }
 
-            var contactFromInput = GetContactById(contactInputId);
+            var contactFromInput = GetContactById(creatorId, contactInputId);
             if (contactFromInput == null)
             {
                 Console.WriteLine("Invalid contact id. Contact not found.");
@@ -56,8 +58,8 @@ namespace Phonebook.Views.ContactViews
             switch (userChoice)
             {
                 case ReadContactEnum.PhoneMenu:
-                    var phoneModifyView = new PhoneModifyView(phoneRepository, userId, contactId);
-                    phoneModifyView.Show();
+                    var phoneModifyView = (PhoneModifyView)_serviceProvider.GetService(typeof(PhoneModifyView));
+                    phoneModifyView.Show(userId, contactId);
                     return false;
                 case ReadContactEnum.Continue:
                     return true;

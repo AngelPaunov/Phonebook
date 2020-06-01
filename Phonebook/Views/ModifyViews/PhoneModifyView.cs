@@ -6,18 +6,22 @@ namespace Phonebook.Views.PhoneViews
     public class PhoneModifyView
     {
         private readonly IPhoneRepository phoneRepository;
-        private readonly uint userId;
-        private readonly uint contactId;
+        private readonly IServiceProvider _serviceProvider;
 
-        public PhoneModifyView(IPhoneRepository phoneRepository, uint userId, uint contactId)
+        public PhoneModifyView(IServiceProvider serviceProvider, IPhoneRepository phoneRepository)
         {
+            this._serviceProvider = serviceProvider;
             this.phoneRepository = phoneRepository;
-            this.userId = userId;
-            this.contactId = contactId;
         }
 
-        public void Show()
+        private uint _userId;
+        private uint _contactId;
+
+        public void Show(uint userId, uint contactId)
         {
+            this._userId = userId;
+            this._contactId = contactId;
+
             while (true)
             {
                 Console.Clear();
@@ -38,24 +42,24 @@ namespace Phonebook.Views.PhoneViews
             switch (userChoice)
             {
                 case ModifyMenuEnum.Create:
-                    var createPhoneView = new CreatePhoneView(phoneRepository, userId, contactId);
-                    createPhoneView.Show();
+                    var createPhoneView = (CreatePhoneView)_serviceProvider.GetService(typeof(CreatePhoneView));
+                    createPhoneView.Show(_userId, _contactId);
                     return false;
                 case ModifyMenuEnum.ReadSingle:
-                    var readPhoneView = new ReadPhoneView(phoneRepository, userId, contactId);
-                    readPhoneView.Show();
+                    var readPhoneView = (ReadPhoneView)_serviceProvider.GetService(typeof(ReadPhoneView));
+                    readPhoneView.Show(_userId, _contactId);
                     return false;
                 case ModifyMenuEnum.ReadAll:
-                    var readAllPhonesView = new ReadAllPhonesView(phoneRepository, userId, contactId);
-                    readAllPhonesView.Show();
+                    var readAllPhonesView = (ReadAllPhonesView)_serviceProvider.GetService(typeof(ReadAllPhonesView));
+                    readAllPhonesView.Show(_userId, _contactId);
                     return false;
                 case ModifyMenuEnum.Update:
-                    var updatePhoneView = new UpdatePhoneView(phoneRepository, userId, contactId);
-                    updatePhoneView.Show();
+                    var updatePhoneView = (UpdatePhoneView)_serviceProvider.GetService(typeof(UpdatePhoneView));
+                    updatePhoneView.Show(_userId, _contactId);
                     return false;
                 case ModifyMenuEnum.Delete:
-                    var deletePhoneView = new DeletePhoneView(phoneRepository, userId, contactId);
-                    deletePhoneView.Show();
+                    var deletePhoneView = (DeletePhoneView)_serviceProvider.GetService(typeof(DeletePhoneView));
+                    deletePhoneView.Show(_userId, _contactId);
                     return false;
                 case ModifyMenuEnum.Exit:
                     return true;
@@ -93,7 +97,7 @@ namespace Phonebook.Views.PhoneViews
 
         private void RenderMenu()
         {
-            Console.WriteLine($"Phone menu for contact: {contactId}");
+            Console.WriteLine($"Phone menu for contact: {_contactId}");
             Console.WriteLine("[C]reate phone");
             Console.WriteLine("[R]ead phone");
             Console.WriteLine("Re[a]d all phones");

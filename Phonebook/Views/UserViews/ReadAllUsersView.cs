@@ -1,5 +1,4 @@
-﻿using Phonebook.CSVRepositories;
-using Phonebook.Entities;
+﻿using Phonebook.Entities;
 using System;
 
 namespace Phonebook.Views.UserViews
@@ -13,7 +12,7 @@ namespace Phonebook.Views.UserViews
         {
             Console.Clear();
 
-            foreach (var user in userRepository.ReadAllUsers())
+            foreach (var user in _userRepository.ReadAllUsers())
             {
                 Console.WriteLine($"ID: {user.Id}");
                 Console.WriteLine($"Username: {user.Username}");

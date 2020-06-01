@@ -1,16 +1,16 @@
 ﻿using Phonebook.Entities;
-using Phonebook.CSVRepositories;
+using Phonebook.Repositories.CSV;
 using System;
 
 namespace Phonebook.Views.UserViews
 {
     public class BaseUserView
     {
-        protected IUserRepository userRepository;
+        protected IUserRepository _userRepository;
 
         public BaseUserView(IUserRepository userRepository)
         {
-            this.userRepository = userRepository;
+            this._userRepository=userRepository;
         }
 
         public uint GetIdFromInput()
@@ -30,7 +30,7 @@ namespace Phonebook.Views.UserViews
         public User GetUserById(uint userId) {
             var userFromInput = new User(userId);
 
-            userFromInput = userRepository.ReadUser(userFromInput);
+            userFromInput = _userRepository.ReadUser(userFromInput);
 
             return userFromInput;
         }

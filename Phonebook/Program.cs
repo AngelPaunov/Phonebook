@@ -1,7 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Phonebook.CSVRepositories;
 using Phonebook.Entities;
+using Phonebook.Repositories.CSV;
+using Phonebook.Repositories.JSON;
+using Phonebook.Repositories.XML;
 using Phonebook.Views;
+using Phonebook.Views.ContactViews;
+using Phonebook.Views.PhoneViews;
+using Phonebook.Views.UserViews;
 using System;
 
 namespace Phonebook
@@ -23,15 +28,34 @@ namespace Phonebook
         private static void ConfigureRepositories()
         {
             var serviceCollection = new ServiceCollection()
-                .AddScoped<IUserRepository, CSVUserRepository>()
-                .AddScoped<IContactRepository, CSVContactRepository>()
-                .AddScoped<IPhoneRepository, CSVPhoneRepository>()
+                .AddScoped<IUserRepository, XMLUserRepository>()
+                .AddScoped<IContactRepository, XMLContactRepository>()
+                .AddScoped<IPhoneRepository, XMLPhoneRepository>()
                 .AddTransient<HomeView>()
                 .AddTransient<LoginView>()
                 .AddTransient<UserView>()
-                .AddTransient<AdminView>();
+                .AddTransient<AdminView>()
+                .AddTransient<UserModifyView>()
+                .AddTransient<ContactModifyView>()
+                .AddTransient<PhoneModifyView>()
 
-            // TODO: ...Register each view
+                .AddTransient<CreateUserView>()
+                .AddTransient<ReadUserView>()
+                .AddTransient<ReadAllUsersView>()
+                .AddTransient<DeleteUserView>()
+                .AddTransient<UpdateUserView>()
+
+                .AddTransient<CreateContactView>()
+                .AddTransient<ReadContactView>()
+                .AddTransient<ReadAllContactsView>()
+                .AddTransient<UpdateContactView>()
+                .AddTransient<DeleteContactView>()
+
+                .AddTransient<CreatePhoneView>()
+                .AddTransient<ReadPhoneView>()
+                .AddTransient<ReadAllPhonesView>()
+                .AddTransient<UpdatePhoneView>()
+                .AddTransient<DeletePhoneView>();
 
             serviceProvider = serviceCollection.BuildServiceProvider();
         }

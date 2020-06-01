@@ -1,5 +1,5 @@
 ﻿using Phonebook.Entities;
-using Phonebook.CSVRepositories;
+using Phonebook.Repositories.CSV;
 using System;
 
 namespace Phonebook.Views.UserViews
@@ -30,7 +30,7 @@ namespace Phonebook.Views.UserViews
                 return;
             }
 
-            userRepository.DeleteUser(userFromInput);
+            _userRepository.DeleteUser(userFromInput);
 
             Console.WriteLine("User has been deleted.");
             Console.ReadKey(true);
