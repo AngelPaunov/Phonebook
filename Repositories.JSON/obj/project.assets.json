@@ -74,11 +74,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.JSON\\Repositories.JSON.csproj",
+      "projectUniqueName": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Repositories.JSON\\Repositories.JSON.csproj",
       "projectName": "Repositories.JSON",
-      "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.JSON\\Repositories.JSON.csproj",
+      "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Repositories.JSON\\Repositories.JSON.csproj",
       "packagesPath": "C:\\Users\\Ангел\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.JSON\\obj\\",
+      "outputPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Repositories.JSON\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -97,8 +97,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
-              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj"
+            "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
+              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj"
             }
           }
         }

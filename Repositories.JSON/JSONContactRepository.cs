@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Phonebook.Entities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,6 +27,9 @@ namespace Phonebook.Repositories.JSON
             var lastContact = contactsList.LastOrDefault();
 
             newContact.Id = lastContact == null ? 1 : lastContact.Id + 1;
+            var currentTimeAsUtc = DateTime.UtcNow;
+            newContact.CreateDate = currentTimeAsUtc;
+            newContact.UpdateDate = currentTimeAsUtc;
             contactsList.Add(newContact);
 
             var jsonFinalFile = JsonConvert.SerializeObject(contactsList, Formatting.Indented);
@@ -61,7 +65,9 @@ namespace Phonebook.Repositories.JSON
             string jsonString = File.ReadAllText(filePath);
             var contactList = JsonConvert.DeserializeObject<Contact[]>(jsonString);
             var contactIndex = contactToUpdate.Id - 1;
-            contactList[contactIndex] = new Contact(contactToUpdate);
+            contactToUpdate.CreateDate = contactList[contactIndex].CreateDate;
+            contactToUpdate.UpdateDate = DateTime.UtcNow;
+            contactList[contactIndex] = contactToUpdate;
 
             var jsonFinalFile = JsonConvert.SerializeObject(contactList, Formatting.Indented);
             File.WriteAllText(filePath, jsonFinalFile);

@@ -1,4 +1,5 @@
 ﻿using Phonebook.Entities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,11 +30,14 @@ namespace Phonebook.Repositories.XML
             var lastPhone = ReadAllPhones().LastOrDefault(p => p.UserId == newPhone.UserId && p.ContactId == newPhone.ContactId);
 
             newPhone.Id = lastPhone == null ? 1 : lastPhone.Id + 1;
+            var currentTimeAsUtc = DateTime.UtcNow;
             XElement newXmlPhone = new XElement("Phone",
                             new XElement("userId", newPhone.UserId),
                             new XElement("contactId", newPhone.ContactId),
                             new XElement("id", newPhone.Id),
-                            new XElement("phoneNumber", newPhone.PhoneNumber));
+                            new XElement("phoneNumber", newPhone.PhoneNumber),
+                            new XElement("createDate", currentTimeAsUtc),
+                            new XElement("updateDate", currentTimeAsUtc));
             xmlFile.Root.Add(newXmlPhone);
             xmlFile.Save(filePath);
         }
@@ -51,7 +55,9 @@ namespace Phonebook.Repositories.XML
                 UserId = uint.Parse(PhoneAsXmlElement.Element("userId").Value),
                 ContactId = uint.Parse(PhoneAsXmlElement.Element("contactId").Value),
                 Id = uint.Parse(PhoneAsXmlElement.Element("id").Value),
-                PhoneNumber = PhoneAsXmlElement.Element("phoneNumber").Value
+                PhoneNumber = PhoneAsXmlElement.Element("phoneNumber").Value,
+                CreateDate = DateTime.Parse(PhoneAsXmlElement.Element("createDate").Value),
+                UpdateDate = DateTime.Parse(PhoneAsXmlElement.Element("updateDate").Value)
             };
 
             return PhoneFromXml;
@@ -64,7 +70,9 @@ namespace Phonebook.Repositories.XML
                 UserId = uint.Parse(p.Element("userId").Value),
                 ContactId = uint.Parse(p.Element("contactId").Value),
                 Id = uint.Parse(p.Element("id").Value),
-                PhoneNumber = p.Element("phoneNumber").Value
+                PhoneNumber = p.Element("phoneNumber").Value,
+                CreateDate = DateTime.Parse(p.Element("createDate").Value),
+                UpdateDate = DateTime.Parse(p.Element("updateDate").Value)
             });
             return PhonesFromXml;
         }
@@ -75,6 +83,7 @@ namespace Phonebook.Repositories.XML
                                                                                 && p.Element("userId").Value == PhoneToUpdate.UserId.ToString()
                                                                                 && p.Element("contactId").Value == PhoneToUpdate.ContactId.ToString());
             PhoneAsXmlElement.Element("phoneNumber").SetValue(PhoneToUpdate.PhoneNumber);
+            PhoneAsXmlElement.Element("updateDate").SetValue(DateTime.UtcNow);
             xmlFile.Save(filePath);
         }
 

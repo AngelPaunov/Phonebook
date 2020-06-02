@@ -206,11 +206,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook\\Phonebook.csproj",
+      "projectUniqueName": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook\\Phonebook.csproj",
       "projectName": "Phonebook",
-      "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook\\Phonebook.csproj",
+      "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook\\Phonebook.csproj",
       "packagesPath": "C:\\Users\\Ангел\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook\\obj\\",
+      "outputPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -229,20 +229,20 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
-              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj"
+            "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
+              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj"
             },
-            "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj": {
-              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj"
+            "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj": {
+              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj"
             },
-            "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.CSV\\Repositories.CSV.csproj": {
-              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.CSV\\Repositories.CSV.csproj"
+            "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Repositories.CSV\\Repositories.CSV.csproj": {
+              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Repositories.CSV\\Repositories.CSV.csproj"
             },
-            "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.JSON\\Repositories.JSON.csproj": {
-              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.JSON\\Repositories.JSON.csproj"
+            "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Repositories.JSON\\Repositories.JSON.csproj": {
+              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Repositories.JSON\\Repositories.JSON.csproj"
             },
-            "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.XML\\Repositories.XML.csproj": {
-              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Repositories.XML\\Repositories.XML.csproj"
+            "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Repositories.XML\\Repositories.XML.csproj": {
+              "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Repositories.XML\\Repositories.XML.csproj"
             }
           }
         }

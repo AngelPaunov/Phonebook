@@ -35,6 +35,8 @@ namespace Phonebook.Views.UserViews
             Console.WriteLine($"First Name: {userFromInput.FirstName}");
             Console.WriteLine($"Last Name: {userFromInput.LastName}");
             Console.WriteLine($"Admin: {userFromInput.IsAdmin}");
+            Console.WriteLine($"Create Date: {userFromInput.CreateDate.ToLocalTime()}");
+            Console.WriteLine($"Update Date: {userFromInput.UpdateDate.ToLocalTime()}");
 
             Console.WriteLine();
             Console.WriteLine("Press any key to continue.");

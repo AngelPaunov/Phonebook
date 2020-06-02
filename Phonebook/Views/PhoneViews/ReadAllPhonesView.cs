@@ -1,5 +1,4 @@
 ﻿using Phonebook.Entities;
-using Phonebook.Repositories.CSV;
 using System;
 using System.Linq;
 
@@ -18,6 +17,8 @@ namespace Phonebook.Views.PhoneViews
             {
                 Console.WriteLine($"ID: {phone.Id}");
                 Console.WriteLine($"Phone number: {phone.PhoneNumber}");
+                Console.WriteLine($"Create Date: {phone.CreateDate.ToLocalTime()}");
+                Console.WriteLine($"Update Date: {phone.UpdateDate.ToLocalTime()}");
             }
 
             Console.WriteLine();

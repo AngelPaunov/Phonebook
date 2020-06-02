@@ -35,6 +35,8 @@ namespace Phonebook.Views.PhoneViews
 
             Console.WriteLine($"ID: {phoneFromInput.Id}");
             Console.WriteLine($"Phone number: {phoneFromInput.PhoneNumber}");
+            Console.WriteLine($"Create Date: {phoneFromInput.CreateDate.ToLocalTime()}");
+            Console.WriteLine($"Update Date: {phoneFromInput.UpdateDate.ToLocalTime()}");
 
             Console.ReadKey(true);
         }

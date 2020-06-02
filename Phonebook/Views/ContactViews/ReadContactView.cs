@@ -41,6 +41,8 @@ namespace Phonebook.Views.ContactViews
             Console.WriteLine($"First Name: {contactFromInput.FirstName}");
             Console.WriteLine($"Last Name: {contactFromInput.LastName}");
             Console.WriteLine($"Email: {contactFromInput.Email}");
+            Console.WriteLine($"Create Date: {contactFromInput.CreateDate.ToLocalTime()}");
+            Console.WriteLine($"Update Date: {contactFromInput.UpdateDate.ToLocalTime()}");
             Console.WriteLine();
             Console.WriteLine("[P]hone menu");
             Console.WriteLine("Any key to continue");

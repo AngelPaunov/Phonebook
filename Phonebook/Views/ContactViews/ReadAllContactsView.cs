@@ -19,6 +19,8 @@ namespace Phonebook.Views.ContactViews
                 Console.WriteLine($"First Name: {contact.FirstName}");
                 Console.WriteLine($"Last Name: {contact.LastName}");
                 Console.WriteLine($"Email: {contact.Email}");
+                Console.WriteLine($"Create Date: {contact.CreateDate.ToLocalTime()}");
+                Console.WriteLine($"Update Date: {contact.UpdateDate.ToLocalTime()}");
                 Console.WriteLine();
             }
 

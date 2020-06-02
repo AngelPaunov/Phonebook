@@ -1,4 +1,5 @@
 ﻿using Phonebook.Entities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,9 +31,12 @@ namespace Phonebook.Repositories.CSV
                 newPhone.Id = lastPhone.Id + 1;
             }
 
+            var currentTimeAsUtc = DateTime.UtcNow;
+            newPhone.CreateDate = currentTimeAsUtc;
+            newPhone.UpdateDate = currentTimeAsUtc;
             using (StreamWriter writer = new StreamWriter(filePath, true))
             {
-                writer.WriteLine($"{newPhone.UserId},{newPhone.ContactId},{newPhone.Id},{newPhone.PhoneNumber}");
+                writer.WriteLine($"{newPhone.UserId},{newPhone.ContactId},{newPhone.Id},{newPhone.PhoneNumber},{newPhone.CreateDate},{newPhone.UpdateDate}");
             }
         }
 
@@ -80,11 +84,13 @@ namespace Phonebook.Repositories.CSV
 
                         if (phone.Id == phoneToUpdate.Id && phone.UserId == phoneToUpdate.UserId && phone.ContactId == phoneToUpdate.ContactId)
                         {
-                            writer.WriteLine($"{phoneToUpdate.UserId},{phoneToUpdate.ContactId},{phoneToUpdate.Id},{phoneToUpdate.PhoneNumber}");
+                            phoneToUpdate.CreateDate = phone.CreateDate;
+                            phoneToUpdate.UpdateDate = DateTime.UtcNow;
+                            writer.WriteLine($"{phoneToUpdate.UserId},{phoneToUpdate.ContactId},{phoneToUpdate.Id},{phoneToUpdate.PhoneNumber},{phoneToUpdate.CreateDate},{phoneToUpdate.UpdateDate}");
                             continue;
                         }
 
-                        writer.WriteLine($"{phone.UserId},{phone.ContactId},{phone.Id},{phone.PhoneNumber}");
+                        writer.WriteLine($"{phone.UserId},{phone.ContactId},{phone.Id},{phone.PhoneNumber},{phone.CreateDate},{phone.UpdateDate}");
                     }
                 }
             }
@@ -110,11 +116,11 @@ namespace Phonebook.Repositories.CSV
 
                         if ((phone.ContactId == phoneToDelete.ContactId && phone.UserId == phoneToDelete.UserId) && phone.Id > phoneToDelete.Id)
                         {
-                            writer.WriteLine($"{phone.UserId},{phone.ContactId},{phone.Id},{phone.PhoneNumber}");
+                            writer.WriteLine($"{phone.UserId},{phone.ContactId},{phone.Id},{phone.PhoneNumber},{phone.CreateDate},{phone.UpdateDate}");
                             continue;
                         }
 
-                        writer.WriteLine($"{phone.UserId},{phone.ContactId},{phone.Id},{phone.PhoneNumber}");
+                        writer.WriteLine($"{phone.UserId},{phone.ContactId},{phone.Id},{phone.PhoneNumber},{phone.CreateDate},{phone.UpdateDate}");
                     }
                 }
             }
@@ -125,12 +131,16 @@ namespace Phonebook.Repositories.CSV
         {
             string[] phoneData = line.Split(',');
 
-            uint userId = uint.Parse(phoneData[0]);
-            uint contactId = uint.Parse(phoneData[1]);
-            uint phoneId = uint.Parse(phoneData[2]);
-            string phoneNumber = phoneData[3];
-
-            return new Phone(userId, contactId, phoneId, phoneNumber);
+            var phoneFromCSV = new Phone
+            {
+                UserId = uint.Parse(phoneData[0]),
+                ContactId = uint.Parse(phoneData[1]),
+                Id = uint.Parse(phoneData[2]),
+                PhoneNumber = phoneData[3],
+                CreateDate = DateTime.Parse(phoneData[4]),
+                UpdateDate = DateTime.Parse(phoneData[5])
+            };
+            return phoneFromCSV;
         }
     }
 }

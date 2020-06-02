@@ -19,6 +19,8 @@ namespace Phonebook.Views.UserViews
                 Console.WriteLine($"First Name: {user.FirstName}");
                 Console.WriteLine($"Last Name: {user.LastName}");
                 Console.WriteLine($"Admin: {user.IsAdmin}");
+                Console.WriteLine($"Create Date: {user.CreateDate.ToLocalTime()}");
+                Console.WriteLine($"Update Date: {user.UpdateDate.ToLocalTime()}");
                 Console.WriteLine();
             }
 

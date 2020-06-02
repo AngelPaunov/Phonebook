@@ -30,6 +30,8 @@ namespace Phonebook.Views.UserViews
             }
 
             userFromInput = GetUserFromConsole();
+            if (userFromInput is null) return;
+
             userFromInput.Id = userInputId;
             _userRepository.UpdateUser(userFromInput);
 

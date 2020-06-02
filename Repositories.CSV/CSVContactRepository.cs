@@ -1,4 +1,5 @@
 ﻿using Phonebook.Entities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,9 +31,12 @@ namespace Phonebook.Repositories.CSV
                 newContact.Id = lastContact.Id + 1;
             }
 
+            var currentTimeAsUtc = DateTime.UtcNow;
+            newContact.CreateDate = currentTimeAsUtc;
+            newContact.UpdateDate = currentTimeAsUtc;
             using (StreamWriter writer = new StreamWriter(filePath, true))
             {
-                writer.WriteLine($"{newContact.CreatorId},{newContact.Id},{newContact.FirstName},{newContact.LastName},{newContact.Email}");
+                writer.WriteLine($"{newContact.CreatorId},{newContact.Id},{newContact.FirstName},{newContact.LastName},{newContact.Email},{newContact.CreateDate},{newContact.UpdateDate}");
             }
         }
 
@@ -80,11 +84,13 @@ namespace Phonebook.Repositories.CSV
 
                         if (contact.Id == contactToUpdate.Id && contact.CreatorId == contactToUpdate.CreatorId)
                         {
-                            writer.WriteLine($"{contactToUpdate.CreatorId},{contactToUpdate.Id},{contactToUpdate.FirstName},{contactToUpdate.LastName},{contactToUpdate.Email}");
+                            contactToUpdate.CreateDate = contact.CreateDate;
+                            contactToUpdate.UpdateDate = DateTime.UtcNow;
+                            writer.WriteLine($"{contactToUpdate.CreatorId},{contactToUpdate.Id},{contactToUpdate.FirstName},{contactToUpdate.LastName},{contactToUpdate.Email},{contactToUpdate.CreateDate},{contactToUpdate.UpdateDate}");
                             continue;
                         }
 
-                        writer.WriteLine($"{contact.CreatorId},{contact.Id},{contact.FirstName},{contact.LastName},{contact.Email}");
+                        writer.WriteLine($"{contact.CreatorId},{contact.Id},{contact.FirstName},{contact.LastName},{contact.Email},{contact.CreateDate},{contact.UpdateDate}");
                     }
                 }
             }
@@ -110,11 +116,11 @@ namespace Phonebook.Repositories.CSV
 
                         if (contact.CreatorId == contactToDelete.CreatorId && contact.Id > contactToDelete.Id)
                         {
-                            writer.WriteLine($"{contact.CreatorId},{contact.Id - 1},{contact.FirstName},{contact.LastName},{contact.Email}");
+                            writer.WriteLine($"{contact.CreatorId},{contact.Id - 1},{contact.FirstName},{contact.LastName},{contact.Email},{contact.CreateDate},{contact.UpdateDate}");
                             continue;
                         }
 
-                        writer.WriteLine($"{contact.CreatorId},{contact.Id},{contact.FirstName},{contact.LastName},{contact.Email}");
+                        writer.WriteLine($"{contact.CreatorId},{contact.Id},{contact.FirstName},{contact.LastName},{contact.Email},{contact.CreateDate},{contact.UpdateDate}");
                     }
                 }
             }
@@ -125,13 +131,17 @@ namespace Phonebook.Repositories.CSV
         {
             string[] contactData = line.Split(',');
 
-            uint creatorId = uint.Parse(contactData[0]);
-            uint contactId = uint.Parse(contactData[1]);
-            string firstName = contactData[2];
-            string lastName = contactData[3];
-            string email = contactData[4];
-
-            return new Contact(creatorId, firstName, lastName, email, contactId);
+            var contactFromCSV = new Contact
+            {
+                CreatorId = uint.Parse(contactData[0]),
+                Id = uint.Parse(contactData[1]),
+                FirstName = contactData[2],
+                LastName = contactData[3],
+                Email = contactData[4],
+                CreateDate = DateTime.Parse(contactData[5]),
+                UpdateDate = DateTime.Parse(contactData[6])
+            };
+            return contactFromCSV;
         }
     }
 }

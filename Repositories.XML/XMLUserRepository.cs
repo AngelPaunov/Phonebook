@@ -1,4 +1,5 @@
 ﻿using Phonebook.Entities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace Phonebook.Repositories.XML
                 File.Create(filePath).Close();
                 xmlFile = new XDocument();
                 xmlFile.Add(new XElement("Users"));
+
                 CreateUser(new User("admin", "adminpass", "admin", "admin", true));
             }
 
@@ -29,13 +31,16 @@ namespace Phonebook.Repositories.XML
             var lastUser = ReadAllUsers().LastOrDefault();
 
             newUser.Id = lastUser == null ? 1 : lastUser.Id + 1;
+            var currentTimeAsUtc = DateTime.UtcNow;
             XElement newXmlUser = new XElement("User",
                             new XElement("id", newUser.Id),
                             new XElement("username", newUser.Username),
                             new XElement("password", newUser.Password),
                             new XElement("firstName", newUser.FirstName),
                             new XElement("lastName", newUser.LastName),
-                            new XElement("isAdmin", newUser.IsAdmin));
+                            new XElement("isAdmin", newUser.IsAdmin),
+                            new XElement("createDate", currentTimeAsUtc),
+                            new XElement("updateDate", currentTimeAsUtc));
             xmlFile.Root.Add(newXmlUser);
             xmlFile.Save(filePath);
         }
@@ -53,7 +58,9 @@ namespace Phonebook.Repositories.XML
                 Password = userAsXmlElement.Element("password").Value,
                 FirstName = userAsXmlElement.Element("firstName").Value,
                 LastName = userAsXmlElement.Element("lastName").Value,
-                IsAdmin = bool.Parse(userAsXmlElement.Element("isAdmin").Value)
+                IsAdmin = bool.Parse(userAsXmlElement.Element("isAdmin").Value),
+                CreateDate = DateTime.Parse(userAsXmlElement.Element("createDate").Value),
+                UpdateDate = DateTime.Parse(userAsXmlElement.Element("updateDate").Value)
             };
 
             return userFromXml;
@@ -68,7 +75,9 @@ namespace Phonebook.Repositories.XML
                 Password = u.Element("password").Value,
                 FirstName = u.Element("firstName").Value,
                 LastName = u.Element("lastName").Value,
-                IsAdmin = bool.Parse(u.Element("isAdmin").Value)
+                IsAdmin = bool.Parse(u.Element("isAdmin").Value),
+                CreateDate = DateTime.Parse(u.Element("createDate").Value),
+                UpdateDate = DateTime.Parse(u.Element("updateDate").Value)
             });
             return usersFromXml;
         }
@@ -81,6 +90,7 @@ namespace Phonebook.Repositories.XML
             userAsXmlElement.Element("firstName").SetValue(userToUpdate.FirstName);
             userAsXmlElement.Element("lastName").SetValue(userToUpdate.LastName);
             userAsXmlElement.Element("isAdmin").SetValue(userToUpdate.IsAdmin);
+            userAsXmlElement.Element("updateDate").SetValue(DateTime.UtcNow);
             xmlFile.Save(filePath);
         }
 

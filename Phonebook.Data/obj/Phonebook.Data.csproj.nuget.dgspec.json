@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj": {}
+    "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
+    "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj",
         "projectName": "Phonebook.Entities",
-        "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj",
+        "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj",
         "packagesPath": "C:\\Users\\Ангел\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Core\\obj\\",
+        "outputPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -59,14 +59,14 @@
         }
       }
     },
-    "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj": {
+    "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj",
         "projectName": "Phonebook.Data",
-        "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj",
+        "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Data\\Phonebook.Data.csproj",
         "packagesPath": "C:\\Users\\Ангел\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Data\\obj\\",
+        "outputPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -85,8 +85,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
-                "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj"
+              "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj": {
+                "projectPath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook.Core\\Phonebook.Entities.csproj"
               }
             }
           }

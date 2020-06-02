@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iViv4fbn0soFY5iK926jC+V8JYCibCjkcLMWetwjqd3TEdkWjuIs6x+/V6UW97WldiZA09zzzBVkJmjV4DiEMA==",
+  "dgSpecHash": "dbqLxnqBrv6WzEIPxCctjulJqKMMIduk2Rq1LXKVKeEhzqvj2Oc4YYKDE/T0oT82eh5uR6Vgh8AXGnvdfV3YPA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ангел\\Desktop\\Exercise\\PhoneBook\\Phonebook\\Phonebook\\Phonebook.csproj",
+  "projectFilePath": "C:\\Users\\Ангел\\Desktop\\Exercise\\Phonebook\\Phonebook\\Phonebook\\Phonebook.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Ангел\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.4\\microsoft.extensions.dependencyinjection.3.1.4.nupkg.sha512",
     "C:\\Users\\Ангел\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.4\\microsoft.extensions.dependencyinjection.abstractions.3.1.4.nupkg.sha512",

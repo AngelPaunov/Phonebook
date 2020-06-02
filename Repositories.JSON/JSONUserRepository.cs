@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Phonebook.Entities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,7 +16,9 @@ namespace Phonebook.Repositories.JSON
             if (!File.Exists(filePath))
             {
                 File.Create(filePath).Close();
+
                 CreateUser(new User("admin", "adminpass", "admin", "admin", true));
+
             }
         }
 
@@ -27,6 +30,10 @@ namespace Phonebook.Repositories.JSON
             var lastUser = usersList.LastOrDefault();
 
             newUser.Id = lastUser == null ? 1 : lastUser.Id + 1;
+
+            var currentTimeAsUtc = DateTime.UtcNow;
+            newUser.CreateDate = currentTimeAsUtc;
+            newUser.UpdateDate = currentTimeAsUtc;
             usersList.Add(newUser);
 
             var jsonFinalFile = JsonConvert.SerializeObject(usersList, Formatting.Indented);
@@ -61,7 +68,10 @@ namespace Phonebook.Repositories.JSON
             string jsonString = File.ReadAllText(filePath);
             var userList = JsonConvert.DeserializeObject<User[]>(jsonString);
             var userIndex = userToUpdate.Id - 1;
-            userList[userIndex] = new User(userToUpdate);
+
+            userToUpdate.CreateDate = userList[userIndex].CreateDate;
+            userToUpdate.UpdateDate = DateTime.UtcNow;
+            userList[userIndex] = userToUpdate;
 
             var jsonFinalFile = JsonConvert.SerializeObject(userList, Formatting.Indented);
             File.WriteAllText(filePath, jsonFinalFile);

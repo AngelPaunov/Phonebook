@@ -1,4 +1,5 @@
 ﻿using Phonebook.Entities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -29,12 +30,16 @@ namespace Phonebook.Repositories.XML
             var lastContact = ReadAllContacts().LastOrDefault(c => c.CreatorId == newContact.CreatorId);
 
             newContact.Id = lastContact == null ? 1 : lastContact.Id + 1;
+
+            var currentTimeAsUtc = DateTime.UtcNow;
             XElement newXmlContact = new XElement("Contact",
                             new XElement("creatorId", newContact.CreatorId),
                             new XElement("id", newContact.Id),
                             new XElement("firstName", newContact.FirstName),
                             new XElement("lastName", newContact.LastName),
-                            new XElement("email", newContact.Email));
+                            new XElement("email", newContact.Email),
+                            new XElement("createDate", currentTimeAsUtc),
+                            new XElement("updateDate", currentTimeAsUtc));
             xmlFile.Root.Add(newXmlContact);
             xmlFile.Save(filePath);
         }
@@ -51,7 +56,9 @@ namespace Phonebook.Repositories.XML
                 Id = uint.Parse(contactAsXmlElement.Element("id").Value),
                 FirstName = contactAsXmlElement.Element("firstName").Value,
                 LastName = contactAsXmlElement.Element("lastName").Value,
-                Email = contactAsXmlElement.Element("email").Value
+                Email = contactAsXmlElement.Element("email").Value,
+                CreateDate = DateTime.Parse(contactAsXmlElement.Element("createDate").Value),
+                UpdateDate = DateTime.Parse(contactAsXmlElement.Element("updateDate").Value)
             };
 
             return ContactFromXml;
@@ -66,6 +73,8 @@ namespace Phonebook.Repositories.XML
                 FirstName = c.Element("firstName").Value,
                 LastName = c.Element("lastName").Value,
                 Email = c.Element("email").Value,
+                CreateDate = DateTime.Parse(c.Element("createDate").Value),
+                UpdateDate = DateTime.Parse(c.Element("updateDate").Value)
             });
             return ContactsFromXml;
         }
@@ -76,6 +85,7 @@ namespace Phonebook.Repositories.XML
             ContactAsXmlElement.Element("firstName").SetValue(ContactToUpdate.FirstName);
             ContactAsXmlElement.Element("lastName").SetValue(ContactToUpdate.LastName);
             ContactAsXmlElement.Element("email").SetValue(ContactToUpdate.Email);
+            ContactAsXmlElement.Element("updateDate").SetValue(DateTime.UtcNow);
             xmlFile.Save(filePath);
         }
 

@@ -28,9 +28,9 @@ namespace Phonebook
         private static void ConfigureRepositories()
         {
             var serviceCollection = new ServiceCollection()
-                .AddScoped<IUserRepository, XMLUserRepository>()
-                .AddScoped<IContactRepository, XMLContactRepository>()
-                .AddScoped<IPhoneRepository, XMLPhoneRepository>()
+                .AddScoped<IUserRepository, CSVUserRepository>()
+                .AddScoped<IContactRepository, CSVContactRepository>()
+                .AddScoped<IPhoneRepository, CSVPhoneRepository>()
                 .AddTransient<HomeView>()
                 .AddTransient<LoginView>()
                 .AddTransient<UserView>()
